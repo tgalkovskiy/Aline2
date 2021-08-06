@@ -30,7 +30,7 @@ namespace PlayerNamaspase
                  if (Input.GetKey(KeyCode.LeftShift))
                  {
                      transform.Translate(AplyNewVector(ref _x, ref _z,ref _speedRun));
-                     _animationControler.SetSpeed_and_strafe(_z*2, _x);
+                     _animationControler.SetSpeed_and_strafe(_z*1.8f, _x);
                  }
                  else
                  {
