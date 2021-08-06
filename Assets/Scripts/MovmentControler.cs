@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 namespace PlayerNamaspase
 {
@@ -12,6 +11,7 @@ namespace PlayerNamaspase
         [Header("Speed Player")][Tooltip("Speed Player")][SerializeField] [Range(1f, 7)] private float _speedWalk = default;
         [Header("Speed Player")][Tooltip("Speed Player")][SerializeField] [Range(8f, 15)] private float _speedRun = default;
         [Header("Camera sensitivity")][Tooltip("Camera sensitivity")][SerializeField] [Range(1f, 5)] private float _sensitivityCamera = default;
+        [SerializeField] private ShakeCameraControl _shakeCamera = default;
         private AnimationControler _animationControler;
         private float _x;
         private float _z;
@@ -31,16 +31,19 @@ namespace PlayerNamaspase
                  {
                      transform.Translate(AplyNewVector(ref _x, ref _z,ref _speedRun));
                      _animationControler.SetSpeed_and_strafe(_z*2, _x);
+                     _shakeCamera.SetShakeCamera(2.5f);
                  }
                  else
                  {
                      transform.Translate(AplyNewVector(ref _x, ref _z,ref _speedWalk));
                      _animationControler.SetSpeed_and_strafe(_z, _x);
+                     _shakeCamera.SetShakeCamera(1.5f);
                  }
             }
             else
             {
                 _animationControler.SetSpeed_and_strafe(0,0);
+                _shakeCamera.SetShakeCamera(0.75f);
 
             }
             mouseX = Input.GetAxis("Mouse X");
