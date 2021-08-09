@@ -25,22 +25,22 @@ namespace PlayerNamaspase
 
         private void Update()
         {
-            if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0 || _horizontal.Horizontal !=0 || _horizontal.Vertical !=0)
+            if(_joystic)
             {
-                if (_joystic)
-                {
-                    _x = _horizontal.Vertical;
-                    _z = _horizontal.Horizontal;
-                    mouseX = _vertical.Horizontal;
-                    transform.rotation *= new Quaternion(0,mouseX*Time.deltaTime*_sensitivityCamera,0,1);
-                }
-                else
-                {
-                    _x = Input.GetAxis("Horizontal");
-                    _z = Input.GetAxis("Vertical");
-                    mouseX = Input.GetAxis("Mouse X");
-                    transform.rotation *= new Quaternion(0,mouseX*Time.deltaTime*_sensitivityCamera,0,1);
-                }
+                _x = _horizontal.Horizontal;
+                _z = _horizontal.Vertical;
+                mouseX = _vertical.Horizontal;
+                transform.rotation *= new Quaternion(0,mouseX*Time.deltaTime*_sensitivityCamera,0,1);
+            }
+            else
+            {
+                _x = Input.GetAxis("Horizontal");
+                _z = Input.GetAxis("Vertical");
+                mouseX = Input.GetAxis("Mouse X");
+                transform.rotation *= new Quaternion(0,mouseX*Time.deltaTime*_sensitivityCamera,0,1);
+            }
+            if(_x != 0 || _z != 0)
+            {
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
                     transform.Translate(AplyNewVector(ref _x, ref _z, ref _speedRun));
@@ -64,6 +64,7 @@ namespace PlayerNamaspase
         {
             return new Vector3(speed*Time.deltaTime*x, 0, speed*Time.deltaTime*z);
         }
+        
     }
 }
 
