@@ -2,5 +2,6 @@ public enum TypeCollision
 {
     player,
     enemy,
-    trap
+    trap,
+    Bullet
 }
