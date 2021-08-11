@@ -18,6 +18,9 @@ namespace PlayerNamaspase
         private float _x;
         private float _z;
         private float mouseX;
+        
+        public event Action <bool> ShootEvent;
+
         private void Start()
         {
             _animationControler=transform.GetChild(0).GetComponent<AnimationControler>();
