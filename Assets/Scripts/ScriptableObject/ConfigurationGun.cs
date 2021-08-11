@@ -4,7 +4,6 @@ using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Gun", menuName = "Configuration Gun", order = 0)]
-
 public class ConfigurationGun : ScriptableObject
 {
     public TypeGun typeGun;
