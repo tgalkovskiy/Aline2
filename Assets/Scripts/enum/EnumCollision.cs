@@ -1,7 +1,9 @@
 public enum TypeCollision
 {
-    player,
-    enemy,
-    trap,
-    Bullet
+    Player,
+    Enemy,
+    Trap,
+    Bullet, 
+    DangerZone, 
+    SafeZone
 }

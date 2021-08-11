@@ -6,6 +6,7 @@ using UnityEngine;
 public class CollisionDetected : MonoBehaviour
 {
     public TypeCollision _Type;
+    
     public event Action<TypeCollision, TypeCollision> isCollision;
     private void OnCollisionEnter(Collision other)
     {

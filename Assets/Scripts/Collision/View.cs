@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using PlayerNamaspase.Enemys;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -27,16 +28,7 @@ namespace Presenter
            }
            _presenterPlayer = new PresenterPlayer(this, 100);
            _player.isCollision += _presenterPlayer.GetDamage_P;
-           if (_enemy.Count > 0)
-           {
-               for (int i = 0; i < _enemy.Count; i++)
-               {
-                   _presenters.Add(new PresenterEnemy(this, 100*i));
-                   _enemy[i].isCollision += _presenters[i].GetDamage_P;
-               }
-           }
        }
-       
        public void SetDamagePlayer(int damage)
        {
            Debug.Log($"player get {damage} damage");
@@ -49,6 +41,12 @@ namespace Presenter
        public void AddPresenter_and_Model(CollisionDetected _collisionDetected)
        {
            _enemy.Add(_collisionDetected);
+           EnemyView _view = _collisionDetected.gameObject.GetComponent<EnemyView>();
+           _view._player = _player;
+           _view.Move();
+           _presenters.Add(new PresenterEnemy(this, _view.enemyConfig));
+           _enemy[_enemy.Count-1].isCollision+= _presenters[_presenters.Count-1].IsCollision;
+           
        }
        public void RemovePresenter_and_Model(CollisionDetected _collisionDetected, int indexCollider)
        {
@@ -60,7 +58,6 @@ namespace Presenter
        {
            _enemy.RemoveAt(_enemy.FindIndex(x => x.name == nameCollider));
        }
-   
    } 
 }
 

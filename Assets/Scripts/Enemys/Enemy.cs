@@ -11,14 +11,9 @@ public abstract class Enemy : MonoBehaviour
     protected float damage;
     protected float attackDelay;
 
-    protected Rigidbody rb;
+    protected Rigidbody _rbBody;
     protected abstract void Attack();
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
 
-   
     protected void SetConfigurationEnemy(ConfigurationEnemy enemy)
     {
         health = enemy.health;
@@ -26,7 +21,7 @@ public abstract class Enemy : MonoBehaviour
         damage = enemy.damage;
         attackDelay = enemy.attackDelay;
     }
-
+    
     protected void ChangeHealth(float value)
     {
         health -= value;
@@ -35,9 +30,8 @@ public abstract class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     protected void Movement(Vector3 direction)
     {
-        rb.MovePosition(transform.position+(direction.normalized*speed));
+        _rbBody.MovePosition(transform.position+(direction.normalized*speed));
     }
 }

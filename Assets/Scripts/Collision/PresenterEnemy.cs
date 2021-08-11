@@ -27,23 +27,24 @@
 
         public class PresenterEnemy
         {
-            public PresenterEnemy(View view, int hpEnemy)
+            public PresenterEnemy(View view, ConfigurationEnemy configurationEnemy)
             {
                 _view = view;
-                _modelEnemy = new ModelEnemy(hpEnemy);
+                _modelEnemy = new ModelEnemy(configurationEnemy);
                 _modelEnemy._hpEnemyAction += _view.SetDamagePlayer;
             }
 
             private View _view;
             private ModelEnemy _modelEnemy;
 
-            public void GetDamage_P(TypeCollision _first, TypeCollision _second)
+            public void IsCollision(TypeCollision _first, TypeCollision _second)
             {
                 if (_first != _second)
                 {
-                   _modelEnemy.m_GetDamage(10); 
+                    _modelEnemy.m_GetDamage(10); 
                 }
             }
+            
         }  
     }
     

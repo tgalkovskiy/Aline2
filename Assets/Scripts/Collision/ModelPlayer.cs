@@ -19,15 +19,14 @@
     
     public class ModelEnemy
     {
-        public ModelEnemy(int hp)
+        public ModelEnemy(ConfigurationEnemy configurationEnemy)
         {
-            _hpEnemy = hp;
+            _configurationEnemy = configurationEnemy;
         }
+        private ConfigurationEnemy _configurationEnemy;
         public Action<int> _hpEnemyAction;
-        private int _hpEnemy;
         public void m_GetDamage(int damage)
         {
-            _hpEnemy += damage;
             _hpEnemyAction.Invoke(damage);
         }
     }
