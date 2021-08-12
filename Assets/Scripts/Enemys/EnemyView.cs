@@ -6,7 +6,6 @@ using UnityEngine.Serialization;
 
 namespace PlayerNamaspase.Enemys
 {
-    [RequireComponent(typeof(Rigidbody))]
     public class EnemyView : MonoBehaviour
     {
         [HideInInspector] public CollisionDetected _player;

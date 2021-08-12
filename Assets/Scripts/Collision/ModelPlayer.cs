@@ -15,19 +15,29 @@
             _hpPlayer -= damage;
             _hpPlayerAction.Invoke(damage);
         }
+        
     }
     
     public class ModelEnemy
     {
-        public ModelEnemy(ConfigurationEnemy configurationEnemy)
+        public ModelEnemy(ConfigurationEnemy configurationEnemy, CollisionDetected collisionDetected)
         {
-            _configurationEnemy = configurationEnemy;
+            _health = configurationEnemy.health;
+            _collisionDetected = collisionDetected;
         }
+        private float _health;
+        private CollisionDetected _collisionDetected;
         private ConfigurationEnemy _configurationEnemy;
         public Action<int> _hpEnemyAction;
+        public Action<CollisionDetected> _Die;
         public void m_GetDamage(int damage)
         {
             _hpEnemyAction.Invoke(damage);
+        }
+        public void m_SetHP(int hp)
+        {
+            _health -= hp;
+           _Die.Invoke(_collisionDetected);
         }
     }
     

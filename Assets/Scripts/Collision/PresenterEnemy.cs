@@ -16,35 +16,30 @@
             private View _view;
             private ModelPlayer _modelPlayer;
 
-            public void GetDamage_P(TypeCollision _first, TypeCollision _second)
+            public void GetDamage_P(int damage)
             {
-                if (_first != _second)
-                {
-                   _modelPlayer.m_GetDamage(10); 
-                }
+                _modelPlayer.m_GetDamage(damage);
             }
         }
 
         public class PresenterEnemy
         {
-            public PresenterEnemy(View view, ConfigurationEnemy configurationEnemy)
+            public PresenterEnemy(View view, ConfigurationEnemy configurationEnemy, CollisionDetected collisionDetected)
             {
                 _view = view;
-                _modelEnemy = new ModelEnemy(configurationEnemy);
+                _modelEnemy = new ModelEnemy(configurationEnemy,collisionDetected);
                 _modelEnemy._hpEnemyAction += _view.SetDamagePlayer;
+                _modelEnemy._Die += _view.RemovePresenter_and_Model;
+
             }
 
             private View _view;
             private ModelEnemy _modelEnemy;
 
-            public void IsCollision(TypeCollision _first, TypeCollision _second)
+            public void SetHPEnemy(int hp)
             {
-                if (_first != _second)
-                {
-                    _modelEnemy.m_GetDamage(10); 
-                }
+                _modelEnemy.m_SetHP(hp);
             }
-            
         }  
     }
     

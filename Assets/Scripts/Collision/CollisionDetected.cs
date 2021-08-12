@@ -7,9 +7,22 @@ public class CollisionDetected : MonoBehaviour
 {
     public TypeCollision _Type;
     
-    public event Action<TypeCollision, TypeCollision> isCollision;
+    public event Action<int> _getDamagePlayer;
+    public event Action<int> _setHpEnemy; 
     private void OnCollisionEnter(Collision other)
     {
-        isCollision.Invoke(_Type,other.collider.GetComponent<CollisionDetected>()._Type);
+        if (other.gameObject.GetComponent<CollisionDetected>())
+        {
+            TypeCollision _collisionType = other.gameObject.GetComponent<CollisionDetected>()._Type;
+            if (_Type == TypeCollision.Player && _collisionType == TypeCollision.Enemy)
+            {
+                _getDamagePlayer.Invoke(10);
+            }
+            if (_Type == TypeCollision.Enemy && _collisionType == TypeCollision.Player)
+            {
+                _setHpEnemy.Invoke(10);
+            }
+        }
+        
     }
 }

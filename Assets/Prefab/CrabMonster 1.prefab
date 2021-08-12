@@ -2964,10 +2964,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7889044601965575820}
   - component: {fileID: 7791404860561407670}
-  - component: {fileID: 4400526196140847863}
   - component: {fileID: 4400526196140847862}
   - component: {fileID: 4400526196140847860}
   - component: {fileID: 7886428629675985675}
+  - component: {fileID: 4751203276321707906}
   m_Layer: 0
   m_Name: CrabMonster 1
   m_TagString: Untagged
@@ -3011,22 +3011,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!54 &4400526196140847863
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7886428629675985674}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &4400526196140847862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3039,6 +3023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 136673d75c0b4bf0b5ebd009282942ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
   enemyConfig: {fileID: 11400000, guid: 500c1d5da2ba8ff44886b4d86aedf37f, type: 2}
 --- !u!195 &4400526196140847860
 NavMeshAgent:
@@ -3075,6 +3060,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Type: 1
+--- !u!65 &4751203276321707906
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7886428629675985674}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 2, z: 4}
+  m_Center: {x: 0, y: 1.35, z: 0}
 --- !u!1 &7886432025518853154
 GameObject:
   m_ObjectHideFlags: 0

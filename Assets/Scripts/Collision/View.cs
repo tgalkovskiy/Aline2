@@ -27,7 +27,8 @@ namespace Presenter
                Destroy(this);
            }
            _presenterPlayer = new PresenterPlayer(this, 100);
-           _player.isCollision += _presenterPlayer.GetDamage_P;
+           _player._getDamagePlayer += _presenterPlayer.GetDamage_P;
+           //_player.isCollision += _presenterPlayer.GetDamage_P;
        }
        public void SetDamagePlayer(int damage)
        {
@@ -44,8 +45,8 @@ namespace Presenter
            EnemyView _view = _collisionDetected.gameObject.GetComponent<EnemyView>();
            _view._player = _player;
            _view.Move();
-           _presenters.Add(new PresenterEnemy(this, _view.enemyConfig));
-           _enemy[_enemy.Count-1].isCollision+= _presenters[_presenters.Count-1].IsCollision;
+           _presenters.Add(new PresenterEnemy(this, _view.enemyConfig, _collisionDetected));
+           _enemy[_enemy.Count-1]._setHpEnemy+=_presenters[_presenters.Count-1].SetHPEnemy;
            
        }
        public void RemovePresenter_and_Model(CollisionDetected _collisionDetected, int indexCollider)
@@ -54,9 +55,10 @@ namespace Presenter
             _enemy.RemoveAt(_enemy.Count-1);
            
        }
-       public void RemovePresenter_and_Model(CollisionDetected _collisionDetected, string nameCollider)
+       public void RemovePresenter_and_Model(CollisionDetected _collisionDetected)
        {
-           _enemy.RemoveAt(_enemy.FindIndex(x => x.name == nameCollider));
+           _enemy.RemoveAt(_enemy.FindIndex(x => x.name ==_collisionDetected.name));
+           Destroy(_collisionDetected.gameObject);
        }
    } 
 }
