@@ -48,26 +48,29 @@ namespace PlayerNamaspase
             {
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
-                    transform.Translate(AplyNewVector(ref _x, ref _z, ref _speedRun));
+                    _rigidbody.AddRelativeForce(AplyNewVector(ref _x, ref _z, ref _speedRun));
+                    //transform.Translate(AplyNewVector(ref _x, ref _z, ref _speedRun));
                     _animationController.SetSpeed_and_strafe(_z * 2, _x);
                     _shakeCamera.SetShakeCamera(2.5f);
                 }
                 else
                 {
-                    transform.Translate(AplyNewVector(ref _x, ref _z, ref _speedWalk));
+                    _rigidbody.AddRelativeForce(AplyNewVector(ref _x, ref _z, ref _speedWalk));
+                    //transform.Translate(AplyNewVector(ref _x, ref _z, ref _speedWalk));
                     _animationController.SetSpeed_and_strafe(_z, _x);
                     _shakeCamera.SetShakeCamera(1.5f);
                 }
             }
             else
             {
+                _rigidbody.AddRelativeForce(new Vector3(0,0,0));
                 _animationController.SetSpeed_and_strafe(0,0);
                 _shakeCamera.SetShakeCamera(0.75f);
             }
         }
         private Vector3 AplyNewVector(ref float x, ref float z, ref float speed)
         {
-            return new Vector3(speed*Time.deltaTime*x, 0, speed*Time.deltaTime*z);
+            return new Vector3(speed*Time.deltaTime*x*2000, 0, speed*Time.deltaTime*z*2000);
         }
         
     }
