@@ -668,7 +668,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2630068191066516160}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0014104843}
+  m_LocalPosition: {x: 0, y: -0.01, z: 0.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4842225410471919055}
@@ -815,7 +815,7 @@ GameObject:
   - component: {fileID: 6197471717243310596}
   - component: {fileID: 8677118982778803844}
   - component: {fileID: 2781126622344348534}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -830,7 +830,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3121448106254301936}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.55395013, y: -0.7146596, z: -0.06441116}
+  m_LocalPosition: {x: -0.55395013, y: -0.7146596, z: -0.051}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4842225410471919055}
@@ -981,7 +981,7 @@ GameObject:
   - component: {fileID: 4642474112193041331}
   - component: {fileID: 8032462789383224324}
   - component: {fileID: 9027532829711483293}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Spawner (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -996,7 +996,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4461457718106834749}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.07500003, y: 0.16250007, z: 0.1300013}
+  m_LocalPosition: {x: 0.01, y: -0.156, z: 0.1300013}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children: []
   m_Father: {fileID: 4842225410471919055}
@@ -1059,7 +1059,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4461457718106834749}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1089,6 +1089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03680f5b33b27434fb2c0135fb2fce51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOpen: 0
   _door: {fileID: 3121448106254301936}
   _targetPos: {fileID: 5148594038507152019}
 --- !u!1 &4864888220265725435

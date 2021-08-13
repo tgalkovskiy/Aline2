@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 400000}
+  - component: {fileID: 114949790187472416}
+  m_Layer: 0
+  m_Name: THE_INFESTOR_Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.4661729, y: 0, z: -0.58078074}
+  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114949790187472416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85aff6f3d6aed0349a94486d6cb7de2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  createThese:
+  - {fileID: 1613560964694718, guid: 11ecfea598b59ca4b9220876b879c0d7, type: 3}
+  - {fileID: 1083346513308866, guid: f4e963ea287c6fb48a8175df8c1da77f, type: 3}
+  - {fileID: 1817062290505618, guid: 9ce6bdebdf2453d47af045c7d9a52532, type: 3}
+  - {fileID: 1539701539181202, guid: b93e6a186e9e1db4fb5a4eae243cb786, type: 3}
+  createThisMany: 8
+  parentUnderCreator: 1
+  x_rnd: 0.5
+  y_rnd: 0.1
+  z_rnd: 0.1
+  x_rot_rnd: 30
+  y_rot_rnd: 180
+  z_rot_rnd: 30

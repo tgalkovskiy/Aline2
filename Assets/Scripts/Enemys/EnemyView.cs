@@ -11,14 +11,17 @@ namespace PlayerNamaspase.Enemys
         [HideInInspector] public CollisionDetected _player;
         public ConfigurationEnemy enemyConfig;
         private NavMeshAgent _agent;
+        private Animator _animator;
         private bool isMove = false;
         private void Awake()
         {
             _agent = GetComponent<NavMeshAgent>();
+            _animator = GetComponent<Animator>();
         }
         public void Move()
         {
             isMove = true;
+            _animator.SetTrigger("Walk_Cycle_1");
         }
         private void FixedUpdate()
         {

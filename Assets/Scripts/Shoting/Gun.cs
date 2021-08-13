@@ -7,7 +7,7 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     [SerializeField] private List<ConfigurationGun> guns = new List<ConfigurationGun>();
-
+    [SerializeField] private Transform _posSpawn;
     private TypeGun typeGun;
     private Vector3 spawnPointBullet;
     private GameObject bulletPrefab;
@@ -17,11 +17,8 @@ public class Gun : MonoBehaviour
     private float reloadTime;
     private float velocityImpulse;
     private float weaponSpreed;
-
     private bool isShoot;
     private float timer;
-
-
     private MovmentControler movmentControler;
 
     private void OnEnable()
@@ -43,26 +40,10 @@ public class Gun : MonoBehaviour
     {
         SetNewConfigurationGun(guns[0]);
     }
-
-    private void Update()
+    private void OnShoot()
     {
-        if (isShoot)
-        {
-            if (timer <= 0)
-            {
-                Instantiate(bulletPrefab, spawnPointBullet, Quaternion.identity);
-                timer = shotDelay;
-            }
-            else
-            {
-                timer -= Time.deltaTime;
-            }
-        }
-    }
-
-    private void OnShoot(bool isShoot)
-    {
-        this.isShoot = isShoot;
+        var _bullet = Instantiate(bulletPrefab, _posSpawn.position, transform.rotation);
+        _bullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward*3000, ForceMode.Acceleration);
     }
 
     public void ChangeWeapon(TypeGun gun)

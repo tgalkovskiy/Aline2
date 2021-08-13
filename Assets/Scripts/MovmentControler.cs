@@ -20,7 +20,7 @@ namespace PlayerNamaspase
         private float _z;
         private float mouseX;
         
-        public event Action <bool> ShootEvent;
+        public event Action ShootEvent;
 
         private void Start()
         {
@@ -50,7 +50,7 @@ namespace PlayerNamaspase
                 {
                     _rigidbody.AddRelativeForce(AplyNewVector(ref _x, ref _z, ref _speedRun));
                     //transform.Translate(AplyNewVector(ref _x, ref _z, ref _speedRun));
-                    _animationController.SetSpeed_and_strafe(_z * 2, _x);
+                    _animationController.SetSpeed_and_strafe(_z * 1.8f, _x);
                     _shakeCamera.SetShakeCamera(2.5f);
                 }
                 else
@@ -63,9 +63,13 @@ namespace PlayerNamaspase
             }
             else
             {
-                _rigidbody.AddRelativeForce(new Vector3(0,0,0));
+                _rigidbody.AddForce(Vector3.down*1000);
                 _animationController.SetSpeed_and_strafe(0,0);
                 _shakeCamera.SetShakeCamera(0.75f);
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                ShootEvent.Invoke();
             }
         }
         private Vector3 AplyNewVector(ref float x, ref float z, ref float speed)
