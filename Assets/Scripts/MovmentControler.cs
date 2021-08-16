@@ -36,6 +36,7 @@ namespace PlayerNamaspase
                 _z = _horizontal.Vertical;
                 mouseX = _vertical.Horizontal;
                 transform.rotation *= new Quaternion(0,mouseX*Time.deltaTime*_sensitivityCamera,0,1);
+                transform.position += new Vector3(_x, 0, _z)*_speedWalk*Time.deltaTime;
             }
             else
             {
