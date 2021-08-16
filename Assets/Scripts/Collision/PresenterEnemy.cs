@@ -30,7 +30,6 @@
                 _modelEnemy = new ModelEnemy(configurationEnemy,collisionDetected);
                 _modelEnemy._hpEnemyAction += _view.SetDamagePlayer;
                 _modelEnemy._Die += _view.RemovePresenter_and_Model;
-
             }
 
             private View _view;
@@ -39,6 +38,11 @@
             public void SetHPEnemy(int hp)
             {
                 _modelEnemy.m_SetHP(hp);
+            }
+
+            public void GetDamageEnemy(int damage)
+            {
+                _modelEnemy.m_GetDamage(damage);
             }
         }  
     }
