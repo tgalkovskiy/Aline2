@@ -10,6 +10,7 @@ public class CollisionDetected : MonoBehaviour
     public event Action<int> _getDamagePlayer;
     public event Action<int> _getDamageEnemy;
     public event Action<int> _setHpEnemy; 
+    public event Action _SpawnBlood; 
     private void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.GetComponent<CollisionDetected>())
@@ -26,8 +27,8 @@ public class CollisionDetected : MonoBehaviour
 
             if (_Type == TypeCollision.Enemy && _collisionType == TypeCollision.Bullet)
             {
-                _getDamageEnemy.Invoke(50);
-                Debug.Log(1);
+                _getDamageEnemy.Invoke(10);
+                _SpawnBlood.Invoke();
             }
         }
     }
