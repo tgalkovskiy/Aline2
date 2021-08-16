@@ -32,12 +32,17 @@
         public Action<CollisionDetected> _Die;
         public void m_GetDamage(int damage)
         {
-            _hpEnemyAction.Invoke(damage);
+            _health -= damage;
+            if (_health <= 0)
+            {
+                _Die.Invoke(_collisionDetected);
+            }
+            //_hpEnemyAction.Invoke(damage);
         }
         public void m_SetHP(int hp)
         {
-            _health -= hp;
-           _Die.Invoke(_collisionDetected);
+            //_health -= hp;
+           //_Die.Invoke(_collisionDetected);
         }
     }
     

@@ -40,5 +40,12 @@ public static class PlayAndStopSound
     {
         _embient.PlayOneShot(_embient.clip);
     }
+    public static void PlayStep()
+    {
+        if (!_stepPlayer.isPlaying)
+        {
+          _stepPlayer.PlayOneShot(_stepPlayer.clip);  
+        }
+    }
     
 }

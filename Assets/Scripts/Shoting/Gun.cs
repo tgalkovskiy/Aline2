@@ -43,7 +43,7 @@ public class Gun : MonoBehaviour
     private void OnShoot()
     {
         var _bullet = Instantiate(bulletPrefab, _posSpawn.position, transform.rotation);
-        _bullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward*3000, ForceMode.Acceleration);
+        _bullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward*4000, ForceMode.Acceleration);
     }
 
     public void ChangeWeapon(TypeGun gun)

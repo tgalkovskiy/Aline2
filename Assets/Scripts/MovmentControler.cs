@@ -35,8 +35,11 @@ namespace PlayerNamaspase
                 _x = _horizontal.Horizontal;
                 _z = _horizontal.Vertical;
                 mouseX = _vertical.Horizontal;
-                transform.rotation *= new Quaternion(0,mouseX*Time.deltaTime*_sensitivityCamera,0,1);
-                transform.position += new Vector3(_x, 0, _z)*_speedWalk*Time.deltaTime;
+                transform.rotation *= new Quaternion(0, mouseX * Time.deltaTime * _sensitivityCamera, 0, 1);
+          
+                Vector3 _horizont = transform.right * _x;
+                Vector3 _vertic = transform.forward * _z;
+                Vector3 _velocity = (_horizont + _vertic).normalized * _speedWalk;
             }
             else
             {

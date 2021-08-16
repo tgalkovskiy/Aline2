@@ -47,7 +47,8 @@ namespace Presenter
            _view.Move();
            _presenters.Add(new PresenterEnemy(this, _view.enemyConfig, _collisionDetected));
            _enemy[_enemy.Count-1]._setHpEnemy+=_presenters[_presenters.Count-1].SetHPEnemy;
-           
+           _enemy[_enemy.Count - 1]._getDamageEnemy += _presenters[_presenters.Count - 1].GetDamageEnemy;
+
        }
        public void RemovePresenter_and_Model(CollisionDetected _collisionDetected, int indexCollider)
        {
