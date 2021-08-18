@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Diagnostics.SymbolStore;
 using UnityEngine;
 using UnityEngine.AI;
@@ -23,6 +24,12 @@ namespace PlayerNamaspase.Enemys
             _state = EnemyState.Run;
             _animator.SetTrigger("Walk_Cycle_1");
         }
+
+        public void Die()
+        {
+            _animator.SetTrigger("Die");
+            StartCoroutine(EDie());
+        }
         private void FixedUpdate()
         {
             if (_state == EnemyState.Run)
@@ -30,23 +37,32 @@ namespace PlayerNamaspase.Enemys
                 _agent.SetDestination(_player.transform.position);
             }
 
-            UpdateAnimator();
+            //UpdateAnimator();
         }
 
-        private void UpdateAnimator()
+        IEnumerator EDie()
+        {
+            _agent.Stop();
+            yield return new WaitForSeconds(2);
+            Destroy(gameObject);
+        }
+        /*private void UpdateAnimator()
         {
             switch (_state)
             {
                 case EnemyState.Walk:
-                    _animator.Play("Armature|Walk_Cycle_2");
+                    _animator.SetTrigger("Armature|Walk_Cycle_2");
                     break;
                 case EnemyState.Run:
-                    _animator.Play("Armature|Walk_Cycle_2");
+                    _animator.SetTrigger("Armature|Walk_Cycle_2");
+                    break;
+                case EnemyState.Die:
+                    _animator.SetTrigger("Die");
                     break;
                 default:
-                    _animator.Play("Armature|Rest_1");
+                    _animator.SetTrigger("Armature|Rest_1");
                     break;
             }
-        }
+        }*/
     }
 }

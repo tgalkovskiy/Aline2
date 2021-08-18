@@ -67,8 +67,9 @@ namespace Presenter
        }
        public void RemovePresenter_and_Model(CollisionDetected _collisionDetected)
        {
+           _collisionDetected.gameObject.GetComponent<EnemyView>().Die();
            _enemy.RemoveAt(_enemy.FindIndex(x => x.name ==_collisionDetected.name));
-           Destroy(_collisionDetected.gameObject);
+           //Destroy(_collisionDetected.gameObject);
        }
        
    } 
