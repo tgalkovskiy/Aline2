@@ -10,7 +10,10 @@
         }
         public Action<int> _hpPlayerAction;
         public Action _hpPlayerDie;
+        public Action<CollisionDetected> _Blood;
         private int _hpPlayer;
+        private CollisionDetected _collisionDetected;
+
         public void m_GetDamage(int damage)
         {
             _hpPlayer -= damage;
@@ -20,7 +23,11 @@
             }
             _hpPlayerAction.Invoke(_hpPlayer-damage);
         }
-        
+
+        public void m_SpawnBlood()
+        {
+           _Blood.Invoke(_collisionDetected);
+        }
     }
     
     public class ModelEnemy

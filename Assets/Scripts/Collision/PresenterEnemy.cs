@@ -4,24 +4,29 @@
 
     namespace Presenter
     {
-        public class PresenterPlayer
+    public class PresenterPlayer
+    {
+        public PresenterPlayer(View view, int hpPlayer)
         {
-            public PresenterPlayer(View view, int hpPlayer)
-            {
-                _view = view;
-                _modelPlayer = new ModelPlayer(hpPlayer);
-                _modelPlayer._hpPlayerAction += _view.UpdatePlayerHP;
-                //_modelPlayer._hpPlayerDie+=_view.
-            }
-
-            private View _view;
-            private ModelPlayer _modelPlayer;
-
-            public void GetDamage_P(int damage)
-            {
-                _modelPlayer.m_GetDamage(damage);
-            }
+            _view = view;
+            _modelPlayer = new ModelPlayer(hpPlayer);
+            _modelPlayer._hpPlayerAction += _view.UpdatePlayerHP;
+            //_modelPlayer._hpPlayerDie+=_view.
+            _modelPlayer._Blood += _view.SpawnBlood;
         }
+
+        private View _view;
+        private ModelPlayer _modelPlayer;
+
+        public void GetDamage_P(int damage)
+        {
+            _modelPlayer.m_GetDamage(damage);
+        }
+        public void SpawBlood()
+        {
+            _modelPlayer.m_SpawnBlood();
+        }
+    }
 
         public class PresenterEnemy
         {
