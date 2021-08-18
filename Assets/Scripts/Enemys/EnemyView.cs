@@ -22,13 +22,8 @@ namespace PlayerNamaspase.Enemys
         public void Move()
         {
             _state = EnemyState.Run;
+            _animator.enabled = true;
             _animator.SetTrigger("Walk_Cycle_1");
-        }
-
-        public void Die()
-        {
-            _animator.SetTrigger("Die");
-            StartCoroutine(EDie());
         }
         private void FixedUpdate()
         {
@@ -38,13 +33,6 @@ namespace PlayerNamaspase.Enemys
             }
 
             //UpdateAnimator();
-        }
-
-        IEnumerator EDie()
-        {
-            _agent.Stop();
-            yield return new WaitForSeconds(2);
-            Destroy(gameObject);
         }
         /*private void UpdateAnimator()
         {

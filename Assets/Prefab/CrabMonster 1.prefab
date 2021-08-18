@@ -3001,7 +3001,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7886428629675985674}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 5779b1a41ccf45b45bfc238034373133, type: 3}
   m_Controller: {fileID: 9100000, guid: 62f12fab7442c5b40bb95b8331dd9001, type: 2}
   m_CullingMode: 1
@@ -3026,6 +3026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
   enemyConfig: {fileID: 11400000, guid: 500c1d5da2ba8ff44886b4d86aedf37f, type: 2}
+  _state: 0
 --- !u!195 &4400526196140847860
 NavMeshAgent:
   m_ObjectHideFlags: 0

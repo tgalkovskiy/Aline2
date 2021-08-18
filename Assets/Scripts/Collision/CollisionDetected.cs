@@ -6,7 +6,6 @@ using UnityEngine;
 public class CollisionDetected : MonoBehaviour
 {
     public TypeCollision _Type;
-    
     public event Action<int> _getDamagePlayer;
     public event Action<int> _getDamageEnemy;
     public event Action<int> _setHpEnemy; 
@@ -27,7 +26,6 @@ public class CollisionDetected : MonoBehaviour
             {
                 _setHpEnemy.Invoke(10);
             }
-
             if (_Type == TypeCollision.Enemy && _collisionType == TypeCollision.Bullet)
             {
                 _getDamageEnemy.Invoke(10);

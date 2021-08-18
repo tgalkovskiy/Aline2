@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using PlayerNamaspase;
 using PlayerNamaspase.Enemys;
 using UnityEngine;
 using UnityEngine.Events;
@@ -14,7 +15,8 @@ namespace Presenter
        [Header("All CollisionDetected")][SerializeField] private List<CollisionDetected> _enemy = new List<CollisionDetected>();
        [SerializeField] private CollisionDetected _player = default;
        [SerializeField] private UiPlayerStats _uiPlayerStats = default;
-       [FormerlySerializedAs("_spawnDecal")] [SerializeField] private SpawnOtherObj spawnOtherObj = default;
+       [SerializeField] private SpawnOtherObj spawnOtherObj = default;
+       [SerializeField] private Animator _playerAnimator = default;
        private PresenterPlayer _presenterPlayer;
        private List<PresenterEnemy> _presenters = new List<PresenterEnemy>();
        public static View _Instance;
@@ -36,13 +38,12 @@ namespace Presenter
        public void UpdatePlayerHP(int nowhp)
        {
            _uiPlayerStats._hpSlider.value = nowhp;
-           Debug.Log($"player get {nowhp} damage");
        }
-       public void SetDamageEnemy(int damage)
+       public void DiePlayer()
        {
-           Debug.Log($"enemy get {damage} hp");
+           _player.gameObject.GetComponent<MovmentControler>().enabled = false;
+           _playerAnimator.SetTrigger("Die");
        }
-       
        public void AddPresenter_and_Model(CollisionDetected _collisionDetected)
        {
            _enemy.Add(_collisionDetected);
@@ -61,15 +62,19 @@ namespace Presenter
             _enemy.RemoveAt(_enemy.Count-1);
            
        }
-       public void SpawnBlood(CollisionDetected _collisionDetected)
+       public void SpawnBloodSpaun(CollisionDetected _collisionDetected)
        {
-           spawnOtherObj.SpawnBlood(_collisionDetected.transform);
+           spawnOtherObj.SpawnBloodSpaun(_collisionDetected.transform);
+       }
+       public void SpawnBloodPlayer()
+       {
+           spawnOtherObj.SpawnBloodPlayer(_player.transform);
        }
        public void RemovePresenter_and_Model(CollisionDetected _collisionDetected)
        {
-           _collisionDetected.gameObject.GetComponent<EnemyView>().Die();
+           //_collisionDetected.gameObject.GetComponent<EnemyView>().Die();
            _enemy.RemoveAt(_enemy.FindIndex(x => x.name ==_collisionDetected.name));
-           //Destroy(_collisionDetected.gameObject);
+           Destroy(_collisionDetected.gameObject);
        }
        
    } 

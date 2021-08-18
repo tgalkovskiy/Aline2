@@ -10,7 +10,7 @@
         }
         public Action<int> _hpPlayerAction;
         public Action _hpPlayerDie;
-        public Action<CollisionDetected> _Blood;
+        public Action _Blood;
         private int _hpPlayer;
         private CollisionDetected _collisionDetected;
 
@@ -26,7 +26,7 @@
 
         public void m_SpawnBlood()
         {
-           _Blood.Invoke(_collisionDetected);
+           _Blood.Invoke();
         }
     }
     

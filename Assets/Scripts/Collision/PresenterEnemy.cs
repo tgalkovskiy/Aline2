@@ -11,8 +11,8 @@
             _view = view;
             _modelPlayer = new ModelPlayer(hpPlayer);
             _modelPlayer._hpPlayerAction += _view.UpdatePlayerHP;
-            //_modelPlayer._hpPlayerDie+=_view.
-            _modelPlayer._Blood += _view.SpawnBlood;
+            _modelPlayer._hpPlayerDie += _view.DiePlayer;
+            _modelPlayer._Blood += _view.SpawnBloodPlayer;
         }
 
         private View _view;
@@ -35,7 +35,7 @@
                 _view = view;
                 _modelEnemy = new ModelEnemy(configurationEnemy,collisionDetected);
                 _modelEnemy._hpEnemyAction += _view.UpdatePlayerHP;
-                _modelEnemy._Blood += _view.SpawnBlood;
+                _modelEnemy._Blood += _view.SpawnBloodSpaun;
                 _modelEnemy._Die += _view.RemovePresenter_and_Model;
             }
 
