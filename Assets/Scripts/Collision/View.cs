@@ -54,6 +54,8 @@ namespace Presenter
            _enemy[_enemy.Count-1]._setHpEnemy+=_presenters[_presenters.Count-1].SetHPEnemy;
            _enemy[_enemy.Count - 1]._getDamageEnemy += _presenters[_presenters.Count - 1].GetDamageEnemy;
            _enemy[_enemy.Count - 1]._SpawnBlood += _presenters[_presenters.Count - 1].SpawBlood;
+           _enemy[_enemy.Count - 1]._enemyAttack += _view.Attack;
+           _enemy[_enemy.Count - 1]._enemyMove += _view.Move;
            _player._SpawnBlood += _presenterPlayer.SpawBlood;
        }
        public void RemovePresenter_and_Model(CollisionDetected _collisionDetected, int indexCollider)

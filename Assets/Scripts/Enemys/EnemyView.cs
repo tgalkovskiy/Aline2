@@ -4,6 +4,7 @@ using System.Diagnostics.SymbolStore;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace PlayerNamaspase.Enemys
 {
@@ -11,9 +12,11 @@ namespace PlayerNamaspase.Enemys
     {
         [HideInInspector] public CollisionDetected _player;
         public ConfigurationEnemy enemyConfig;
-        public EnemyState _state = EnemyState.Idle;
+        private EnemyState _state = EnemyState.Idle;
         private NavMeshAgent _agent;
         private Animator _animator;
+        [Range(0.3f, 2.5f)]
+        public float AttackSpeed = .5f;
         private void Awake()
         {
             _agent = GetComponent<NavMeshAgent>();
@@ -22,8 +25,19 @@ namespace PlayerNamaspase.Enemys
         public void Move()
         {
             _state = EnemyState.Run;
-            _animator.enabled = true;
             _animator.SetTrigger("Walk_Cycle_1");
+        }
+        public void Attack()
+        {
+            _state = EnemyState.Attack;
+            _animator.SetTrigger(GetAttackAnimation());
+            StartCoroutine(EAttack());
+        }
+
+        public void Die()
+        {
+            _animator.SetTrigger("Die");
+            StartCoroutine(EDie());
         }
         private void FixedUpdate()
         {
@@ -31,26 +45,30 @@ namespace PlayerNamaspase.Enemys
             {
                 _agent.SetDestination(_player.transform.position);
             }
-
-            //UpdateAnimator();
         }
-        /*private void UpdateAnimator()
+        private string GetAttackAnimation()
         {
-            switch (_state)
+            int AttackNumber = 5;
+            return "Attack_" + Random.Range(1, AttackNumber + 1);
+        }
+
+        IEnumerator EDie()
+        {
+            _agent.Stop();
+            yield return new WaitForSeconds(2);
+            Destroy(gameObject);
+        }
+        IEnumerator EAttack()
+        {
+            yield return new WaitForSeconds(AttackSpeed);
+            if (_state != EnemyState.Attack)
             {
-                case EnemyState.Walk:
-                    _animator.SetTrigger("Armature|Walk_Cycle_2");
-                    break;
-                case EnemyState.Run:
-                    _animator.SetTrigger("Armature|Walk_Cycle_2");
-                    break;
-                case EnemyState.Die:
-                    _animator.SetTrigger("Die");
-                    break;
-                default:
-                    _animator.SetTrigger("Armature|Rest_1");
-                    break;
+                StopCoroutine(EAttack());
             }
-        }*/
+            else
+            {
+                Attack();
+            }
+        }
     }
 }
