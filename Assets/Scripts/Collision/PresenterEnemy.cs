@@ -22,10 +22,6 @@
         {
             _modelPlayer.m_GetDamage(damage);
         }
-        public void SpawBlood()
-        {
-            _modelPlayer.m_SpawnBlood();
-        }
     }
 
         public class PresenterEnemy
@@ -49,10 +45,6 @@
             public void GetDamageEnemy(int damage)
             {
                 _modelEnemy.m_GetDamage(damage);
-            }
-            public void SpawBlood()
-            {
-                _modelEnemy.m_SpawnBlood();
             }
         }  
     }

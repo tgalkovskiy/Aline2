@@ -25,6 +25,7 @@ namespace PlayerNamaspase.Enemys
         public void Move()
         {
             _state = EnemyState.Run;
+            _animator.enabled = true;
             _animator.SetTrigger("Walk_Cycle_1");
         }
         public void Attack()

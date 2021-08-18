@@ -8,8 +8,7 @@ public class CollisionDetected : MonoBehaviour
     public TypeCollision _Type;
     public event Action<int> _getDamagePlayer;
     public event Action<int> _getDamageEnemy;
-    public event Action<int> _setHpEnemy; 
-    public event Action _SpawnBlood;
+    public event Action<int> _setHpEnemy;
     public event Action _enemyAttack;
     public event Action _enemyMove;
 
@@ -22,7 +21,6 @@ public class CollisionDetected : MonoBehaviour
             if (_Type == TypeCollision.Player && _collisionType == TypeCollision.Enemy)
             {
                 _getDamagePlayer.Invoke(10);
-                _SpawnBlood.Invoke();
             }
             if (_Type == TypeCollision.Enemy && _collisionType == TypeCollision.Player)
             {
@@ -32,7 +30,6 @@ public class CollisionDetected : MonoBehaviour
             if (_Type == TypeCollision.Enemy && _collisionType == TypeCollision.Bullet)
             {
                 _getDamageEnemy.Invoke(10);
-                _SpawnBlood.Invoke();
             }
         }
     }
