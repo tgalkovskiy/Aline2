@@ -11,7 +11,9 @@ public class CollisionDetected : MonoBehaviour
     public event Action<int> _getDamageEnemy;
     public event Action<int> _setHpEnemy; 
     public event Action _SpawnBlood;
-    
+    public event Action _enemyAttack;
+    public event Action _enemyMove;
+
 
     private void OnCollisionEnter(Collision other)
     {
@@ -25,6 +27,7 @@ public class CollisionDetected : MonoBehaviour
             }
             if (_Type == TypeCollision.Enemy && _collisionType == TypeCollision.Player)
             {
+                _enemyAttack.Invoke();
                 _setHpEnemy.Invoke(10);
             }
 
@@ -32,6 +35,17 @@ public class CollisionDetected : MonoBehaviour
             {
                 _getDamageEnemy.Invoke(10);
                 _SpawnBlood.Invoke();
+            }
+        }
+    }
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.GetComponent<CollisionDetected>())
+        {
+            TypeCollision _collisionType = other.gameObject.GetComponent<CollisionDetected>()._Type;
+            if (_Type == TypeCollision.Enemy && _collisionType == TypeCollision.Player)
+            {
+                _enemyMove.Invoke();
             }
         }
     }
