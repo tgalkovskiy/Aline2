@@ -25,6 +25,7 @@ namespace PlayerNamaspase.Enemys
         public void Move()
         {
             _state = EnemyState.Run;
+            InvokeRepeating("Run", 0, 3);
             _animator.enabled = true;
             _animator.SetTrigger("Walk_Cycle_1");
         }
@@ -35,18 +36,17 @@ namespace PlayerNamaspase.Enemys
             StartCoroutine(EAttack());
         }
 
-        public void Die()
+        public void Run()
         {
-            _animator.SetTrigger("Die");
-            StartCoroutine(EDie());
+            _agent.SetDestination(_player.transform.position);
         }
-        private void FixedUpdate()
+        /*private void FixedUpdate()
         {
             if (_state == EnemyState.Run)
             {
                 _agent.SetDestination(_player.transform.position);
             }
-        }
+        }*/
         private string GetAttackAnimation()
         {
             int AttackNumber = 5;

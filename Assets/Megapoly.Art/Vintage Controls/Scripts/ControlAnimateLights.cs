@@ -11,7 +11,7 @@ public class ControlAnimateLights : MonoBehaviour
     private int result;
     void Start()
     {
-        InvokeRepeating("Run", startTime, interval);
+        InvokeRepeating("Run", 1, 2);
     }
 
     // Update is called once per frame

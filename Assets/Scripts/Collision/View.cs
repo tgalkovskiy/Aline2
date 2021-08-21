@@ -33,7 +33,6 @@ namespace Presenter
            }
            _presenterPlayer = new PresenterPlayer(this, 100);
            _player._getDamagePlayer += _presenterPlayer.GetDamage_P;
-           //_player.isCollision += _presenterPlayer.GetDamage_P;
        }
        public void UpdatePlayerHP(int nowhp)
        {
