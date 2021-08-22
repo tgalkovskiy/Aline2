@@ -16,6 +16,8 @@ public class SpawnOtherObj : MonoBehaviour
     }
     public void SpawnBloodPlayer(Transform pos)
     {
-        //Instantiate(_prefabDecalPlayer[Random.Range(0, _prefabDecalPlayer.Count)], pos.position, quaternion.Euler(0,Random.Range(0,180),0));
+        Instantiate(_prefabDecalPlayer[Random.Range(0, _prefabDecalPlayer.Count)], pos.position, quaternion.Euler(0,Random.Range(0,180),0));
     }
+
+   
 }
