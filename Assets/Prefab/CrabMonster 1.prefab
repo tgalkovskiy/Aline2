@@ -2985,7 +2985,7 @@ Transform:
   m_GameObject: {fileID: 7886428629675985674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.27, y: 0.0000009536743, z: 85.4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_Children:
   - {fileID: 7889152459984975100}
   - {fileID: 7888633883348862432}
@@ -3026,7 +3026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
   enemyConfig: {fileID: 11400000, guid: 500c1d5da2ba8ff44886b4d86aedf37f, type: 2}
-  _state: 0
+  AttackSpeed: 0.5
 --- !u!195 &4400526196140847860
 NavMeshAgent:
   m_ObjectHideFlags: 0
