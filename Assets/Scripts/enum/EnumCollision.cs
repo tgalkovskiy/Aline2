@@ -4,4 +4,6 @@ public enum TypeCollision
     Enemy,
     Trap,
     Bullet,
+    HpBox,
+    
 }

@@ -6,13 +6,14 @@
     {
     public class PresenterPlayer
     {
-        public PresenterPlayer(View view, int hpPlayer)
+        public PresenterPlayer(View view, ConfigurationPlayer configurationPlayer)
         {
             _view = view;
-            _modelPlayer = new ModelPlayer(hpPlayer);
+            _modelPlayer = new ModelPlayer(configurationPlayer);
             _modelPlayer._hpPlayerAction += _view.UpdatePlayerHP;
             _modelPlayer._hpPlayerDie += _view.DiePlayer;
             _modelPlayer._Blood += _view.SpawnBloodPlayer;
+            _modelPlayer._ShotAction += _view.UpdateAmmo;
         }
 
         private View _view;
@@ -22,9 +23,16 @@
         {
             _modelPlayer.m_GetDamage(damage);
         }
+        public bool Shot()
+        {
+            return _modelPlayer.Shot();
+        }
+        public void GetHP_P(int hp)
+        {
+            _modelPlayer.m_GetHp(hp);
+        }
     }
-
-        public class PresenterEnemy
+    public class PresenterEnemy
         {
             public PresenterEnemy(View view, ConfigurationEnemy configurationEnemy, CollisionDetected collisionDetected)
             {
@@ -38,10 +46,10 @@
             private View _view;
             private ModelEnemy _modelEnemy;
 
-            public void SetHPEnemy(int hp)
+            /*public void SetHPEnemy(int hp)
             {
                 _modelEnemy.m_SetHP(hp);
-            }
+            }*/
             public void GetDamageEnemy(int damage)
             {
                 _modelEnemy.m_GetDamage(damage);

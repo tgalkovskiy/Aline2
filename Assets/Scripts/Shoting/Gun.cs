@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using PlayerNamaspase;
+using Presenter;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -20,7 +21,7 @@ public class Gun : MonoBehaviour
     private bool isShoot;
     private float timer;
     private MovmentControler movmentControler;
-
+    private View _view;
     private void OnEnable()
     {
         movmentControler.ShootEvent += OnShoot;
@@ -34,6 +35,7 @@ public class Gun : MonoBehaviour
     private void Awake()
     {
         movmentControler = GetComponent<MovmentControler>();
+        _view = View._Instance;
     }
 
     private void Start()
@@ -42,8 +44,12 @@ public class Gun : MonoBehaviour
     }
     private void OnShoot()
     {
-        var _bullet = Instantiate(bulletPrefab, _posSpawn.position, transform.rotation);
-        _bullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward*4000, ForceMode.Acceleration);
+        if (_view.Shot())
+        {
+            var _bullet = Instantiate(bulletPrefab, _posSpawn.position, transform.rotation);
+            _bullet.GetComponent<GunDestroyer>().damage = _view._configurationPlayer.damage;
+            _bullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward*4000, ForceMode.Acceleration);  
+        }
     }
 
     public void ChangeWeapon(TypeGun gun)

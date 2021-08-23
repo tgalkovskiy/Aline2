@@ -19,6 +19,10 @@ public class SkillsPlayer : MonoBehaviour
         {
             case 0: _configurationPlayer.SetUpHp();
                 break;
+            case 1: _configurationPlayer.SetUpAmmo();
+                break;
+            case 2: _configurationPlayer.SetUpDamage();
+                break;
         }
     }
 }

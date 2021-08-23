@@ -5,13 +5,24 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Player", menuName = "Configuration Player", order = 0)]
 public class ConfigurationPlayer : ScriptableObject
 {
-    public float health;
+    public int health;
     public float speed;
-    public float damage;
+    public int damage;
     public float attackDelay;
+    public int ammo;
     
     public void SetUpHp()
     {
         health = 150;
+    }
+
+    public void SetUpAmmo()
+    {
+        ammo = 150;
+    }
+
+    public void SetUpDamage()
+    {
+        damage = 25;
     }
 }
