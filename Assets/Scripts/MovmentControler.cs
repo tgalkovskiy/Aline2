@@ -19,7 +19,7 @@ namespace PlayerNamaspase
         private float _x;
         private float _z;
         private float mouseX;
-        
+        private bool run = false;
         public event Action ShootEvent;
 
         private void Start()
@@ -48,37 +48,38 @@ namespace PlayerNamaspase
                 mouseX = Input.GetAxis("Mouse X");
                 transform.rotation *= new Quaternion(0,mouseX*Time.deltaTime*_sensitivityCamera,0,1);
             }
+            if (Input.GetMouseButtonDown(0))
+            {
+                ShootEvent.Invoke();
+            }
+        }
+
+        private void FixedUpdate()
+        {
             if(_x != 0 || _z != 0)
             {
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
                     _rigidbody.AddRelativeForce(AplyNewVector(ref _x, ref _z, ref _speedRun));
-                    //transform.Translate(AplyNewVector(ref _x, ref _z, ref _speedRun));
                     _animationController.SetSpeed_and_strafe(_z * 1.8f, _x);
                     _shakeCamera.SetShakeCamera(2.5f);
                 }
                 else
                 {
                     _rigidbody.AddRelativeForce(AplyNewVector(ref _x, ref _z, ref _speedWalk));
-                    //transform.Translate(AplyNewVector(ref _x, ref _z, ref _speedWalk));
                     _animationController.SetSpeed_and_strafe(_z, _x);
                     _shakeCamera.SetShakeCamera(1.5f);
                 }
             }
             else
             {
-                _rigidbody.AddForce(Vector3.down*1000);
                 _animationController.SetSpeed_and_strafe(0,0);
                 _shakeCamera.SetShakeCamera(0.75f);
-            }
-            if (Input.GetMouseButtonDown(0))
-            {
-                ShootEvent.Invoke();
             }
         }
         private Vector3 AplyNewVector(ref float x, ref float z, ref float speed)
         {
-            return new Vector3(speed*Time.deltaTime*x*2000, 0, speed*Time.deltaTime*z*2000);
+            return new Vector3(speed*Time.deltaTime*x*1000, 0, speed*Time.deltaTime*z*1000);
         }
         
     }

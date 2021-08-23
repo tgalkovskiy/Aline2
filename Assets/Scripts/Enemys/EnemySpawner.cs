@@ -22,8 +22,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-       
         Gizmos.color = new Color(1f, 0.1f, 0.1f,0.4f);
-        Gizmos.DrawCube(transform.position, new Vector3(10,10,10));
+        Gizmos.DrawCube(transform.position, new Vector3(5,5,5));
     }
 }

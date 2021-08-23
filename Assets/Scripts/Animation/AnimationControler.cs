@@ -11,11 +11,11 @@ public class AnimationControler : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
     }
-
     public void SetSpeed_and_strafe(float speed, float strafe)
     {
         _animator.SetFloat("Speed", speed);
         _animator.SetFloat("Strafe", strafe);
     }
+    
 
 }

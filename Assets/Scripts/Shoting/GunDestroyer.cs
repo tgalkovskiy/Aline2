@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GunDestroyer : MonoBehaviour
 {
+    [HideInInspector]public int damage;
     [SerializeField] private GameObject _effect = default;
     [SerializeField] private GameObject _decal = default;
     [SerializeField] private GameObject _bulletBody = default;

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Diagnostics.SymbolStore;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace PlayerNamaspase.Enemys
 {
@@ -10,10 +12,11 @@ namespace PlayerNamaspase.Enemys
     {
         [HideInInspector] public CollisionDetected _player;
         public ConfigurationEnemy enemyConfig;
-        public EnemyState _state;
+        private EnemyState _state = EnemyState.Idle;
         private NavMeshAgent _agent;
         private Animator _animator;
-        private bool isMove = false;
+        [Range(0.3f, 2.5f)]
+        public float AttackSpeed = .5f;
         private void Awake()
         {
             _agent = GetComponent<NavMeshAgent>();
@@ -21,32 +24,51 @@ namespace PlayerNamaspase.Enemys
         }
         public void Move()
         {
-            isMove = true;
+            _state = EnemyState.Run;
+            InvokeRepeating("Run", 0, 3);
+            _animator.enabled = true;
             _animator.SetTrigger("Walk_Cycle_1");
         }
-        private void FixedUpdate()
+        public void Attack()
         {
-            if (isMove)
+            _state = EnemyState.Attack;
+            _animator.SetTrigger(GetAttackAnimation());
+            StartCoroutine(EAttack());
+        }
+
+        public void Run()
+        {
+            _agent.SetDestination(_player.transform.position);
+        }
+        /*private void FixedUpdate()
+        {
+            if (_state == EnemyState.Run)
             {
                 _agent.SetDestination(_player.transform.position);
             }
-
-            UpdateAnimator();
+        }*/
+        private string GetAttackAnimation()
+        {
+            int AttackNumber = 5;
+            return "Attack_" + Random.Range(1, AttackNumber + 1);
         }
 
-        private void UpdateAnimator()
+        IEnumerator EDie()
         {
-            switch (_state)
+            _agent.Stop();
+            yield return new WaitForSeconds(2);
+            Destroy(gameObject);
+        }
+        IEnumerator EAttack()
+        {
+            yield return new WaitForSeconds(AttackSpeed);
+            if (_state != EnemyState.Attack)
             {
-                case EnemyState.Walk:
-                    _animator.Play("Armature|Walk_Cycle_2");
-                    break;
-                case EnemyState.Run:
-                    _animator.Play("Armature|Walk_Cycle_2");
-                    break;
-                default:
-                    _animator.Play("Armature|Rest_1");
-                    break;
+                StopCoroutine(EAttack());
+            }
+            else
+            {
+                Attack();
             }
         }
     }
