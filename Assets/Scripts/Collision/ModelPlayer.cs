@@ -9,13 +9,25 @@
             _hpPlayer = hp;
         }
         public Action<int> _hpPlayerAction;
+        public Action _hpPlayerDie;
+        public Action<CollisionDetected> _Blood;
         private int _hpPlayer;
+        private CollisionDetected _collisionDetected;
+
         public void m_GetDamage(int damage)
         {
             _hpPlayer -= damage;
-            _hpPlayerAction.Invoke(damage);
+            if (_hpPlayer <= 0)
+            {
+                _hpPlayerDie.Invoke();
+            }
+            _hpPlayerAction.Invoke(_hpPlayer-damage);
         }
-        
+
+        public void m_SpawnBlood()
+        {
+           _Blood.Invoke(_collisionDetected);
+        }
     }
     
     public class ModelEnemy
@@ -30,6 +42,7 @@
         private ConfigurationEnemy _configurationEnemy;
         public Action<int> _hpEnemyAction;
         public Action<CollisionDetected> _Die;
+        public Action<CollisionDetected> _Blood;
         public void m_GetDamage(int damage)
         {
             _health -= damage;
@@ -43,6 +56,10 @@
         {
             //_health -= hp;
            //_Die.Invoke(_collisionDetected);
+        }
+        public void m_SpawnBlood()
+        {
+            _Blood.Invoke(_collisionDetected);
         }
     }
     
