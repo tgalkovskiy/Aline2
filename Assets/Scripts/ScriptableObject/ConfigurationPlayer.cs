@@ -11,18 +11,18 @@ public class ConfigurationPlayer : ScriptableObject
     public float attackDelay;
     public int ammo;
     
-    public void SetUpHp()
+    public void SetUpHp(bool boosted)
     {
-        health = 150;
+        health = boosted ? 150 : 100;
     }
 
-    public void SetUpAmmo()
+    public void SetUpAmmo(bool boosted)
     {
-        ammo = 150;
+        ammo = boosted ? 150 : 100;
     }
 
-    public void SetUpDamage()
+    public void SetUpDamage(bool boosted)
     {
-        damage = 25;
+        damage = boosted ? 25 : 10;
     }
 }
