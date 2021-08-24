@@ -10,7 +10,8 @@ public class ConfigurationPlayer : ScriptableObject
     public int damage;
     public float attackDelay;
     public int ammo;
-    
+
+    [TextArea]public string[] _description; 
     public void SetUpHp()
     {
         health = 150;
@@ -24,5 +25,12 @@ public class ConfigurationPlayer : ScriptableObject
     public void SetUpDamage()
     {
         damage = 25;
+    }
+
+    public void SetDefault()
+    {
+        health = 100;
+        ammo = 50;
+        damage = 15;
     }
 }

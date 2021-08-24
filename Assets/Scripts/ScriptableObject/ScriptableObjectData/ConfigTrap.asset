@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7720d67de2b41e1868d27ec783289a9, type: 3}
-  m_Name: EnemyCrab
+  m_Script: {fileID: 11500000, guid: 0cad93acb1833cc4ea3b19dc4e6ab338, type: 3}
+  m_Name: ConfigTrap
   m_EditorClassIdentifier: 
-  health: 100
-  speed: 3.5
-  damage: 20
-  attackDelay: 5
+  _damage: 1

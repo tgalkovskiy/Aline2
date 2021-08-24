@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Presenter;
 using UnityEngine;
 
 namespace PlayerNamaspase
@@ -46,7 +47,12 @@ namespace PlayerNamaspase
             }
             if (Input.GetMouseButtonDown(0))
             {
-                ShootEvent.Invoke();
+                ShootEvent?.Invoke();
+            }
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                View._Instance.ExecuteAction();
             }
         }
 

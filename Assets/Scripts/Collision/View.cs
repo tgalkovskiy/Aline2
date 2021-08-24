@@ -14,14 +14,16 @@ namespace Presenter
    {
        public ConfigurationPlayer _configurationPlayer = default;
        [SerializeField] private CollisionDetected _player = default;
-       [SerializeField] private UiPlayerStats _uiPlayerStats = default;
+       [SerializeField] private UiHolder _uiHolder = default;
        [SerializeField] private SpawnOtherObj spawnOtherObj = default;
        [SerializeField] private Animator _playerAnimator = default;
        private List<CollisionDetected> _enemy = new List<CollisionDetected>();
        private PresenterPlayer _presenterPlayer;
        private List<PresenterEnemy> _presenters = new List<PresenterEnemy>();
+       private bool isExecute = false;
+       public GameObject DestroyerExecute; 
        public static View _Instance;
-       
+      
        private void Awake()
        {
            if (_Instance == null)
@@ -33,25 +35,40 @@ namespace Presenter
                Destroy(this);
            }
            _presenterPlayer = new PresenterPlayer(this, _configurationPlayer);
-           _player._getHpPlayer += _presenterPlayer.GetHP_P;
+           _player._ShowAction += _presenterPlayer.DOShowShowAction;
            _player._getDamagePlayer += _presenterPlayer.GetDamage_P;
-           _uiPlayerStats._hpSlider.maxValue = _configurationPlayer.health;
-           _uiPlayerStats._hpSlider.value = _configurationPlayer.health;
-           _uiPlayerStats._nowHp.text = _configurationPlayer.health.ToString();
-           _uiPlayerStats._ammo.text = _configurationPlayer.ammo.ToString();
+           _player._DataAction += _presenterPlayer.GetDataAction;
+           _uiHolder._hpSlider.maxValue = _configurationPlayer.health;
+           _uiHolder._hpSlider.value = _configurationPlayer.health;
+           _uiHolder._nowHp.text = _configurationPlayer.health.ToString();
+           _uiHolder._ammo.text = _configurationPlayer.ammo.ToString();
        }
        public bool Shot()
        {
            return _presenterPlayer.Shot();
        }
+       public void ShowAction(bool isShow)
+       {
+           _uiHolder._ActionText.SetActive(isShow);
+           isExecute = isShow;
+       }
+       public void ExecuteAction()
+       {
+           if (isExecute)
+           {
+              _presenterPlayer.ExecuteAction();
+              _uiHolder._ActionText.SetActive(false);
+              Destroy(DestroyerExecute);
+           }
+       }
        public void UpdatePlayerHP(int nowhp)
        {
-           _uiPlayerStats._hpSlider.value = nowhp;
-           _uiPlayerStats._nowHp.text = nowhp.ToString();
+           _uiHolder._hpSlider.value = nowhp;
+           _uiHolder._nowHp.text = nowhp.ToString();
        }
        public void UpdateAmmo(int nowAmmo)
        {
-           _uiPlayerStats._ammo.text = nowAmmo.ToString();
+           _uiHolder._ammo.text = nowAmmo.ToString();
        }
        public void DiePlayer()
        {

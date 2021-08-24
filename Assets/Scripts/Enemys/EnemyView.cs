@@ -20,6 +20,7 @@ namespace PlayerNamaspase.Enemys
         private void Awake()
         {
             _agent = GetComponent<NavMeshAgent>();
+            _agent.speed = enemyConfig.speed;
             _animator = GetComponent<Animator>();
         }
         public void Move()
@@ -40,13 +41,7 @@ namespace PlayerNamaspase.Enemys
         {
             _agent.SetDestination(_player.transform.position);
         }
-        /*private void FixedUpdate()
-        {
-            if (_state == EnemyState.Run)
-            {
-                _agent.SetDestination(_player.transform.position);
-            }
-        }*/
+        
         private string GetAttackAnimation()
         {
             int AttackNumber = 5;

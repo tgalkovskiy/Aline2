@@ -11,11 +11,14 @@
             configurationPlayer = _configurationPlayer;
         }
         public Action<int> _hpPlayerAction;
+        public Action<bool> _ActionShow;
         public Action _hpPlayerDie;
         public Action _Blood;
         public Action<int> _ShotAction;
         private int _hpPlayer;
         private int _ammo;
+        private TypeAction _typeAction;
+        private int _value;
         private CollisionDetected _collisionDetected;
         private ConfigurationPlayer configurationPlayer;
         public void m_GetDamage(int damage)
@@ -41,12 +44,31 @@
                 return false;
             }
         }
-
-        public void m_GetHp(int hp)
+        public void m_ShowAction(bool isShow)
         {
-            _hpPlayer = Mathf.Clamp(_hpPlayer + hp, 0, configurationPlayer.health);
-            _hpPlayerAction?.Invoke(_hpPlayer);
+           _ActionShow?.Invoke(isShow);
         }
+
+        public void m_GetDataAction(TypeAction typeAction, int value)
+        {
+            _typeAction = typeAction;
+            _value = value;
+        }
+        public void m_ExecuteAction()
+        {
+            if (_typeAction == TypeAction.AddHealth)
+            {
+                _hpPlayer = Mathf.Clamp(_hpPlayer + _value, 0, configurationPlayer.health);
+                _hpPlayerAction?.Invoke(_hpPlayer);
+                
+            }
+            if (_typeAction == TypeAction.AddAmmo)
+            {
+                _ammo += _value;
+                _ShotAction.Invoke(_ammo);
+            }
+        }
+        
     }
     
     public class ModelEnemy

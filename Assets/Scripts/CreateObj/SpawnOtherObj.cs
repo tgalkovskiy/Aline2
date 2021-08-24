@@ -8,11 +8,13 @@ using Random = UnityEngine.Random;
 public class SpawnOtherObj : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _prefabDecalSpaun = new List<GameObject>();
+    [SerializeField] private List<GameObject> _prefabBloodExp = new List<GameObject>(); 
     [SerializeField] private List<GameObject> _prefabDecalPlayer = new List<GameObject>();
 
     public void SpawnBloodSpaun(Transform pos)
     {
         Instantiate(_prefabDecalSpaun[Random.Range(0, _prefabDecalSpaun.Count)], pos.position, quaternion.Euler(0,Random.Range(0,180),0));
+        Instantiate(_prefabBloodExp[Random.Range(0, _prefabBloodExp.Count)], pos.position, Quaternion.identity);
     }
     public void SpawnBloodPlayer(Transform pos)
     {

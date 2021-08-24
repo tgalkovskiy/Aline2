@@ -4,7 +4,7 @@
 public class ConfigurationEnemy : ScriptableObject
 {
     public int health;
-    public int speed;
+    public float speed;
     public int damage;
     public int attackDelay;
 }

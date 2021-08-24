@@ -14,6 +14,7 @@
             _modelPlayer._hpPlayerDie += _view.DiePlayer;
             _modelPlayer._Blood += _view.SpawnBloodPlayer;
             _modelPlayer._ShotAction += _view.UpdateAmmo;
+            _modelPlayer._ActionShow += _view.ShowAction;
         }
 
         private View _view;
@@ -27,9 +28,18 @@
         {
             return _modelPlayer.Shot();
         }
-        public void GetHP_P(int hp)
+        public void DOShowShowAction(bool isShow)
         {
-            _modelPlayer.m_GetHp(hp);
+            _modelPlayer.m_ShowAction(isShow);
+        }
+
+        public void GetDataAction(TypeAction typeAction, int value)
+        {
+            _modelPlayer.m_GetDataAction(typeAction, value);
+        }
+        public void ExecuteAction()
+        {
+            _modelPlayer.m_ExecuteAction();
         }
     }
     public class PresenterEnemy

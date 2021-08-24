@@ -5,8 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    public void StartGame()
+    [SerializeField] private GameObject _choiceSkills = default;
+    public void ChoiceSkills()
+    {
+        _choiceSkills.SetActive(true);
+        
+    }
+    public void Play()
     {
         SceneManager.LoadScene(1);
     }
+    
 }
