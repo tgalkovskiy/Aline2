@@ -17,8 +17,12 @@ MonoBehaviour:
   damage: 15
   attackDelay: 0
   ammo: 50
+  hedgehog: 0
+  vampirism: 1
   _description:
   - 'Powerful Health: You ate well during your childhood and played sports. +50 hit
     points'
   - 'Patronash: more bullets - more kills. +50 starting ammo.'
   - 'Married to a Rifle: You look after your gun like a wife. +10 damage'
+  - '122 : You look after your gun like a wife. +5 damage Enemy'
+  - 'Vampirism : You look after your gun like a wife. +5 damage Enemy'

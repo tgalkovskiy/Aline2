@@ -3026,6 +3026,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
   enemyConfig: {fileID: 11400000, guid: 500c1d5da2ba8ff44886b4d86aedf37f, type: 2}
+  _renderer: {fileID: 7823673694174516278}
+  _Enemy: 0
+  enemyConfigAll:
+  - {fileID: 11400000, guid: 500c1d5da2ba8ff44886b4d86aedf37f, type: 2}
+  - {fileID: 11400000, guid: 755d2bf5b5d68c347af26646d4cfaa39, type: 2}
+  - {fileID: 11400000, guid: fa86d44ff20663a43976699b89683fa1, type: 2}
+  - {fileID: 11400000, guid: a498524989464fa4f9d09d7aa00eca73, type: 2}
   AttackSpeed: 0.5
 --- !u!195 &4400526196140847860
 NavMeshAgent:

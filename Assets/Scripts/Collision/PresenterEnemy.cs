@@ -41,6 +41,11 @@
         {
             _modelPlayer.m_ExecuteAction();
         }
+
+        public void ExucuteVampirism()
+        {
+            _modelPlayer.m_ExecuteVampirism();
+        }
     }
     public class PresenterEnemy
         {

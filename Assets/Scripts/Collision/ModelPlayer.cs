@@ -9,6 +9,8 @@
             _hpPlayer = _configurationPlayer.health;
             _ammo = _configurationPlayer.ammo;
             configurationPlayer = _configurationPlayer;
+            _hedgehog = _configurationPlayer.hedgehog;
+            _vampirism = _configurationPlayer.vampirism;
         }
         public Action<int> _hpPlayerAction;
         public Action<bool> _ActionShow;
@@ -19,6 +21,8 @@
         private int _ammo;
         private TypeAction _typeAction;
         private int _value;
+        private bool _hedgehog = false;
+        private bool _vampirism = false;
         private CollisionDetected _collisionDetected;
         private ConfigurationPlayer configurationPlayer;
         public void m_GetDamage(int damage)
@@ -66,6 +70,15 @@
             {
                 _ammo += _value;
                 _ShotAction.Invoke(_ammo);
+            }
+        }
+
+        public void m_ExecuteVampirism()
+        {
+            if (_vampirism)
+            {
+                _hpPlayer += 1;
+                _hpPlayerAction.Invoke(_hpPlayer);
             }
         }
         

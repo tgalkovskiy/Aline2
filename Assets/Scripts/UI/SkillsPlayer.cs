@@ -50,6 +50,10 @@ public class SkillsPlayer : MonoBehaviour
                 break;
             case 2: _configurationPlayer.SetUpDamage();
                 break;
+            case 3 : _configurationPlayer.SetHedgehog();
+                break;
+            case 4: _configurationPlayer.SetVampirism();
+                break;
         }
         
     }

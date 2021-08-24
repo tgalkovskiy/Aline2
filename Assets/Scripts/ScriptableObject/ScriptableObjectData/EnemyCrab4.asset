@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7720d67de2b41e1868d27ec783289a9, type: 3}
-  m_Name: ConfigInfestor
+  m_Name: EnemyCrab4
   m_EditorClassIdentifier: 
-  health: 400
-  speed: 1.2
-  damage: 50
+  health: 150
+  speed: 4
+  damage: 30
   attackDelay: 0
-  scale: 2
-  material: {fileID: 0}
+  scale: 0.5
+  material: {fileID: 2100000, guid: 290b4d5debc38304291a70f9baa68a53, type: 2}

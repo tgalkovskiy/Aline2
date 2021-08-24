@@ -10,6 +10,8 @@ public class ConfigurationPlayer : ScriptableObject
     public int damage;
     public float attackDelay;
     public int ammo;
+    public bool hedgehog = false;
+    public bool vampirism = false;
 
     [TextArea]public string[] _description; 
     public void SetUpHp()
@@ -27,10 +29,21 @@ public class ConfigurationPlayer : ScriptableObject
         damage = 25;
     }
 
+    public void SetHedgehog()
+    {
+        hedgehog = true;
+    }
+
+    public void SetVampirism()
+    {
+        vampirism = true;
+    }
     public void SetDefault()
     {
         health = 100;
         ammo = 50;
         damage = 15;
+        hedgehog = false;
+        vampirism = false;
     }
 }
