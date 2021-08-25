@@ -17,4 +17,5 @@ MonoBehaviour:
   damage: 20
   attackDelay: 5
   scale: 0.35
+  exp: 10
   material: {fileID: 2100000, guid: 3085ab7444f8bdc448df6e2a78c0c6b1, type: 2}

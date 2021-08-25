@@ -12,6 +12,7 @@
             _modelPlayer = new ModelPlayer(configurationPlayer);
             _modelPlayer._hpPlayerAction += _view.UpdatePlayerHP;
             _modelPlayer._armorPlayerAction += _view.UpdatePlayerArmor;
+            _modelPlayer._expAction += _view.UpdateExp;
             _modelPlayer._hpPlayerDie += _view.DiePlayer;
             _modelPlayer._Blood += _view.SpawnBloodPlayer;
             _modelPlayer._ShotAction += _view.UpdateAmmo;
@@ -21,6 +22,15 @@
         private View _view;
         private ModelPlayer _modelPlayer;
 
+        public void Load()
+        {
+            _modelPlayer.Load();
+        }
+
+        public void Save()
+        {
+            _modelPlayer.Save();
+        }
         public void GetDamage_P(int damage)
         {
             _modelPlayer.m_GetDamage(damage);
@@ -33,20 +43,21 @@
         {
             _modelPlayer.m_ShowAction(isShow);
         }
-
         public void GetDataAction(TypeAction typeAction, int value)
         {
             _modelPlayer.m_GetDataAction(typeAction, value);
         }
-        
         public void ExecuteAction()
         {
             _modelPlayer.m_ExecuteAction();
         }
-
         public void ExucuteVampirism()
         {
             _modelPlayer.m_ExecuteVampirism();
+        }
+        public void GetExp(int exp)
+        {
+            _modelPlayer.m_GetExp(exp);
         }
     }
     public class PresenterEnemy

@@ -6,6 +6,7 @@ using PlayerNamaspase.Enemys;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Presenter
 { 
@@ -38,11 +39,12 @@ namespace Presenter
            _player._ShowAction += _presenterPlayer.DOShowShowAction;
            _player._getDamagePlayer += _presenterPlayer.GetDamage_P;
            _player._DataAction += _presenterPlayer.GetDataAction;
+           
            _uiHolder._hpSlider.maxValue = _configurationPlayer.health;
            _uiHolder._hpSlider.value = _configurationPlayer.health;
            _uiHolder._armor.maxValue = _configurationPlayer.armor;
            _uiHolder._armor.value = _configurationPlayer.armor;
-           _uiHolder._experience.maxValue = _configurationPlayer.exp;
+           //_uiHolder._experience.maxValue = _configurationPlayer.exp;
            _uiHolder._experience.value = _configurationPlayer.exp;
            _uiHolder._nowHp.text = _configurationPlayer.health.ToString();
            _uiHolder._ammo.text = _configurationPlayer.ammo.ToString();
@@ -72,7 +74,6 @@ namespace Presenter
            _uiHolder._hpSlider.value = nowhp;
            _uiHolder._nowHp.text = nowhp.ToString();
        }
-
        public void UpdatePlayerArmor(int nowArmor)
        {
            _uiHolder._armor.value = nowArmor;
@@ -81,6 +82,12 @@ namespace Presenter
        public void UpdateAmmo(int nowAmmo)
        {
            _uiHolder._ammo.text = nowAmmo.ToString();
+       }
+
+       public void UpdateExp(int nowExp)
+       {
+           _uiHolder._experience.value = nowExp;
+           _uiHolder._experienceNowText.text = nowExp.ToString();
        }
        public void DiePlayer()
        {
@@ -106,9 +113,16 @@ namespace Presenter
        {
            spawnOtherObj.SpawnBloodPlayer(_player.transform);
        }
+
+       public void GetExp(int exp)
+       {
+           _presenterPlayer.GetExp(exp);
+       }
+       
        public void RemovePresenter_and_Model(CollisionDetected _collisionDetected)
        {
            _enemy.RemoveAt(_enemy.FindIndex(x => x.name ==_collisionDetected.name));
+           GetExp(_collisionDetected.gameObject.GetComponent<EnemyView>().enemyConfig.exp);
            Destroy(_collisionDetected.gameObject);
            _presenterPlayer.ExucuteVampirism();
        }

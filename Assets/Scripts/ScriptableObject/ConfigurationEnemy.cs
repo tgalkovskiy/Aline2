@@ -8,5 +8,6 @@ public class ConfigurationEnemy : ScriptableObject
     public int damage;
     public int attackDelay;
     public float scale;
+    public int exp;
     public Material material;
 }
