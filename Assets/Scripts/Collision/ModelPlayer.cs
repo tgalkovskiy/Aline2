@@ -7,32 +7,56 @@
         public ModelPlayer(ConfigurationPlayer _configurationPlayer)
         {
             _hpPlayer = _configurationPlayer.health;
+            _armor = _configurationPlayer.armor;
             _ammo = _configurationPlayer.ammo;
             configurationPlayer = _configurationPlayer;
             _hedgehog = _configurationPlayer.hedgehog;
             _vampirism = _configurationPlayer.vampirism;
+            _timeStop = configurationPlayer.timeStop;
         }
+        private int _hpPlayer;
+        private int _ammo;
+        private int _armor;
+        private bool _hedgehog = false;
+        private bool _vampirism = false;
+        private bool _timeStop = false;
+        
         public Action<int> _hpPlayerAction;
+        public Action<int> _armorPlayerAction;
         public Action<bool> _ActionShow;
         public Action _hpPlayerDie;
         public Action _Blood;
         public Action<int> _ShotAction;
-        private int _hpPlayer;
-        private int _ammo;
+        
         private TypeAction _typeAction;
         private int _value;
-        private bool _hedgehog = false;
-        private bool _vampirism = false;
+        
         private CollisionDetected _collisionDetected;
         private ConfigurationPlayer configurationPlayer;
         public void m_GetDamage(int damage)
         {
-            _hpPlayer -= damage;
-            if (_hpPlayer <= 0)
+            if (_armor > 0)
             {
-                _hpPlayerDie.Invoke();
+                _armor = Mathf.Clamp(_armor - damage, 0, configurationPlayer.armor);
+                _armorPlayerAction.Invoke(_armor);
             }
-            _hpPlayerAction.Invoke(_hpPlayer);
+            else
+            {
+                _hpPlayer -= damage;
+                if (_timeStop && _hpPlayer < configurationPlayer.health / 2)
+                {
+                    Time.timeScale = 0.75f;
+                }
+                else
+                {
+                    Time.timeScale = 1;
+                }
+                if (_hpPlayer <= 0)
+                {
+                    _hpPlayerDie.Invoke();
+                }
+                _hpPlayerAction.Invoke(_hpPlayer);
+            }
             _Blood.Invoke();
         }
         public bool Shot()
@@ -52,7 +76,6 @@
         {
            _ActionShow?.Invoke(isShow);
         }
-
         public void m_GetDataAction(TypeAction typeAction, int value)
         {
             _typeAction = typeAction;
@@ -72,7 +95,6 @@
                 _ShotAction.Invoke(_ammo);
             }
         }
-
         public void m_ExecuteVampirism()
         {
             if (_vampirism)

@@ -13,16 +13,49 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   health: 100
-  speed: 0
   damage: 15
-  attackDelay: 0
   ammo: 50
+  armor: 25
+  exp: 0
   hedgehog: 0
-  vampirism: 1
+  vampirism: 0
+  timeStop: 0
+  geneMode: 0
+  fineder: 0
+  roboGolem: 0
+  viking: 0
+  nuclear: 0
+  spaunkiller: 0
+  insectKiller: 0
+  crioptic: 0
+  critmaster: 0
+  bigGun: 0
+  medalist: 0
+  coin: 0
+  education: 0
+  repair: 0
   _description:
   - 'Powerful Health: You ate well during your childhood and played sports. +50 hit
     points'
   - 'Patronash: more bullets - more kills. +50 starting ammo.'
   - 'Married to a Rifle: You look after your gun like a wife. +10 damage'
-  - '122 : You look after your gun like a wife. +5 damage Enemy'
-  - 'Vampirism : You look after your gun like a wife. +5 damage Enemy'
+  - 'Fugue Fish: You''ve been toxic all your life, enemies touching you take 5 damage'
+  - 'Vampirism: the suit absorbs 1 unit of health before the enemy dies'
+  - 'Slow Time: If health is less than 50%, the time will slow down a little'
+  - 'Modified genes: you are a direct soldier of the future, health +20, armor +20'
+  - 'Search engine: it is easier for you to find secrets on the level'
+  - 'Half-robot: you and the suit are one, you are almost a machine, armor + 60'
+  - "\rViking: you always get into the thick of the battle, damage +25, health -20"
+  - 'Nuclear Child: Radiation deals 70% less damage to you'
+  - "\rSpider Slayer: You have learned to wield a slipper very well + 15 damage to
+    all spiders"
+  - "\rInsectoid Killer: you really dislike tentacles +25 damage to all insectoids"
+  - "\rCryogenic man: hundreds of years in the freezer and you are not afraid of
+    the cold, cold damage reduced by 80%"
+  - 'Eye of the diamond: you deal crits - it''s good (damage + 50%), but rarely -
+    it''s bad (5% chance)'
+  - 'Big gun: size matters - your shots deal 2x damage but spend twice as much ammo'
+  - 'Medalist: you are a diligent goody, health +10, armor +10, ammo +10'
+  - "\rCurmudgeon: you pick up twice as many coins"
+  - 'Nerd: you get twice the experience, take on the school bullies'
+  - 'Jack of all trades: duct tape is your best friend, mods are 30% cheaper'

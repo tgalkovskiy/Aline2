@@ -54,6 +54,36 @@ public class SkillsPlayer : MonoBehaviour
                 break;
             case 4: _configurationPlayer.SetVampirism();
                 break;
+            case 5: _configurationPlayer.SetTimeStop();
+                break;
+            case 6: _configurationPlayer.SetGenemode();
+                break;
+            case 7: _configurationPlayer.SetFineder();
+                break;
+            case 8: _configurationPlayer.SetRoboGolem();
+                break;
+            case 9: _configurationPlayer.SetViking();
+                break;
+            case 10: _configurationPlayer.SetNuclear();
+                break;
+            case 11: _configurationPlayer.SetSpaunKiller();
+                break;
+            case 12: _configurationPlayer.SetInsectKiller();
+                break;
+            case 13: _configurationPlayer.SetCrioptic();
+                break;
+            case 14: _configurationPlayer.SetcritMaster();
+                break;
+            case 15: _configurationPlayer.SetBigGun();
+                break;
+            case 16: _configurationPlayer.SetMedalist();
+                break;
+            case 17: _configurationPlayer.SetCoin();
+                break;
+            case 18: _configurationPlayer.SetEducation();
+                break;
+            case 19: _configurationPlayer.SetRepair();
+                break;
         }
         
     }

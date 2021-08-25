@@ -40,8 +40,14 @@ namespace Presenter
            _player._DataAction += _presenterPlayer.GetDataAction;
            _uiHolder._hpSlider.maxValue = _configurationPlayer.health;
            _uiHolder._hpSlider.value = _configurationPlayer.health;
+           _uiHolder._armor.maxValue = _configurationPlayer.armor;
+           _uiHolder._armor.value = _configurationPlayer.armor;
+           _uiHolder._experience.maxValue = _configurationPlayer.exp;
+           _uiHolder._experience.value = _configurationPlayer.exp;
            _uiHolder._nowHp.text = _configurationPlayer.health.ToString();
            _uiHolder._ammo.text = _configurationPlayer.ammo.ToString();
+           _uiHolder._armorText.text = _configurationPlayer.armor.ToString();
+           _uiHolder._experienceNowText.text = _configurationPlayer.exp.ToString();
        }
        public bool Shot()
        {
@@ -65,6 +71,12 @@ namespace Presenter
        {
            _uiHolder._hpSlider.value = nowhp;
            _uiHolder._nowHp.text = nowhp.ToString();
+       }
+
+       public void UpdatePlayerArmor(int nowArmor)
+       {
+           _uiHolder._armor.value = nowArmor;
+           _uiHolder._armorText.text = nowArmor.ToString();
        }
        public void UpdateAmmo(int nowAmmo)
        {

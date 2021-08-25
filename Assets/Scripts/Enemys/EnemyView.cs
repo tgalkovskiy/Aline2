@@ -50,6 +50,10 @@ namespace PlayerNamaspase.Enemys
                     enemyConfig = enemyConfigAll[(int) TypeEnemy.UpAll];
                     _renderer.material = enemyConfig.material;
                     break;
+                case TypeEnemy.Invisible:
+                    enemyConfig = enemyConfigAll[(int) TypeEnemy.Invisible];
+                    _renderer.material = enemyConfig.material;
+                    break;
             }
             transform.localScale = new Vector3(enemyConfig.scale, enemyConfig.scale, enemyConfig.scale);
             _agent.speed = enemyConfig.speed;

@@ -11,6 +11,7 @@
             _view = view;
             _modelPlayer = new ModelPlayer(configurationPlayer);
             _modelPlayer._hpPlayerAction += _view.UpdatePlayerHP;
+            _modelPlayer._armorPlayerAction += _view.UpdatePlayerArmor;
             _modelPlayer._hpPlayerDie += _view.DiePlayer;
             _modelPlayer._Blood += _view.SpawnBloodPlayer;
             _modelPlayer._ShotAction += _view.UpdateAmmo;
@@ -37,6 +38,7 @@
         {
             _modelPlayer.m_GetDataAction(typeAction, value);
         }
+        
         public void ExecuteAction()
         {
             _modelPlayer.m_ExecuteAction();

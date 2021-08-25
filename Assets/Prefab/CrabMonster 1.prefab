@@ -2189,7 +2189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7888633883348862432
 Transform:
   m_ObjectHideFlags: 0
@@ -3033,6 +3033,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 755d2bf5b5d68c347af26646d4cfaa39, type: 2}
   - {fileID: 11400000, guid: fa86d44ff20663a43976699b89683fa1, type: 2}
   - {fileID: 11400000, guid: a498524989464fa4f9d09d7aa00eca73, type: 2}
+  - {fileID: 11400000, guid: e3ee52cf70a7a954a918966e692cceec, type: 2}
   AttackSpeed: 0.5
 --- !u!195 &4400526196140847860
 NavMeshAgent:
