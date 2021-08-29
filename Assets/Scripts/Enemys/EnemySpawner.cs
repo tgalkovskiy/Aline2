@@ -15,14 +15,7 @@ public class EnemySpawner : MonoBehaviour
             {
                View._Instance.AddPresenter_and_Model(_enemy[i]); 
             }
-            
+            Destroy(this);   
         }
-        Destroy(this);
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = new Color(1f, 0.1f, 0.1f,0.4f);
-        Gizmos.DrawCube(transform.position, new Vector3(5,5,5));
     }
 }

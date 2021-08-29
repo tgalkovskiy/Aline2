@@ -9,11 +9,10 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Presenter
-{ 
-    [ExecuteInEditMode]
-   public class View : MonoBehaviour
-   {
-       public ConfigurationPlayer _configurationPlayer = default;
+{
+    public class View : MonoBehaviour
+    {
+        public ConfigurationPlayer _configurationPlayer = default;
        [SerializeField] private CollisionDetected _player = default;
        [SerializeField] private UiHolder _uiHolder = default;
        [SerializeField] private SpawnOtherObj spawnOtherObj = default;
@@ -83,7 +82,6 @@ namespace Presenter
        {
            _uiHolder._ammo.text = nowAmmo.ToString();
        }
-
        public void UpdateExp(int nowExp)
        {
            _uiHolder._experience.value = nowExp;

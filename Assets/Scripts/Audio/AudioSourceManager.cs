@@ -5,8 +5,8 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 public class AudioSourceManager : MonoBehaviour
-{
-   [SerializeField] private AudioSource _back = default;
+{ 
+    [SerializeField] private AudioSource _back = default;
    [SerializeField] private AudioSource _embient =default;
    [SerializeField] private AudioSource _stepPlayer =default;
    [SerializeField] private AudioSource _stepEnemy = default;

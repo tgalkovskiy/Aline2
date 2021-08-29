@@ -22,7 +22,7 @@
         private bool _hedgehog = false;
         private bool _vampirism = false;
         private bool _timeStop = false;
-        
+        private bool isLife = true;
         public Action<int> _hpPlayerAction;
         public Action<int> _armorPlayerAction;
         public Action<int> _expAction;
@@ -49,29 +49,34 @@
         }
         public void m_GetDamage(int damage)
         {
-            if (_armor > 0)
+            if (isLife)
             {
-                _armor = Mathf.Clamp(_armor - damage, 0, configurationPlayer.armor);
-                _armorPlayerAction.Invoke(_armor);
-            }
-            else
-            {
-                _hpPlayer -= damage;
-                if (_timeStop && _hpPlayer < configurationPlayer.health / 2)
+                if (_armor > 0)
                 {
-                    Time.timeScale = 0.75f;
+                    _armor = Mathf.Clamp(_armor - damage, 0, configurationPlayer.armor);
+                    _armorPlayerAction.Invoke(_armor);
                 }
                 else
                 {
-                    Time.timeScale = 1;
+                    _hpPlayer -= damage;
+                    if (_timeStop && _hpPlayer < configurationPlayer.health / 2)
+                    {
+                        Time.timeScale = 0.75f;
+                    }
+                    else
+                    {
+                        Time.timeScale = 1;
+                    }
+                    if (_hpPlayer <= 0)
+                    {
+                        _hpPlayerDie.Invoke();
+                        isLife = false;
+                    }
+                    _hpPlayerAction.Invoke(_hpPlayer);
                 }
-                if (_hpPlayer <= 0)
-                {
-                    _hpPlayerDie.Invoke();
-                }
-                _hpPlayerAction.Invoke(_hpPlayer);
+
+                _Blood.Invoke();
             }
-            _Blood.Invoke();
         }
         public bool Shot()
         {

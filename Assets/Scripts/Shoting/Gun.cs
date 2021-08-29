@@ -9,6 +9,7 @@ public class Gun : MonoBehaviour
 {
     [SerializeField] private List<ConfigurationGun> guns = new List<ConfigurationGun>();
     [SerializeField] private Transform _posSpawn;
+    private AnimationControler _animationController;
     private TypeGun typeGun;
     private Vector3 spawnPointBullet;
     private GameObject bulletPrefab;
@@ -34,6 +35,7 @@ public class Gun : MonoBehaviour
 
     private void Awake()
     {
+         _animationController=transform.GetChild(0).GetComponent<AnimationControler>();
         movmentControler = GetComponent<MovmentControler>();
         _view = View._Instance;
     }
@@ -46,10 +48,12 @@ public class Gun : MonoBehaviour
     {
         if (_view.Shot())
         {
+            _animationController.ShotAnimation();
             var _bullet = Instantiate(bulletPrefab, _posSpawn.position, transform.rotation);
             _bullet.GetComponent<GunDestroyer>().damage = _view._configurationPlayer.damage;
             _bullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward*4000, ForceMode.Acceleration);  
         }
+        
     }
 
     public void ChangeWeapon(TypeGun gun)

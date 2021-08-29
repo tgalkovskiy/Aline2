@@ -16,6 +16,11 @@ public class AnimationControler : MonoBehaviour
         _animator.SetFloat("Speed", speed);
         _animator.SetFloat("Strafe", strafe);
     }
+
+    public void ShotAnimation()
+    {
+        _animator.SetTrigger("IsShot");
+    }
     
 
 }

@@ -60,18 +60,18 @@ namespace PlayerNamaspase
         {
             if(_x != 0 || _z != 0)
             {
-                if (Input.GetKey(KeyCode.LeftShift))
+                /*if (Input.GetKey(KeyCode.LeftShift))
                 {
                     _rigidbody.AddRelativeForce(AplyNewVector(ref _x, ref _z, ref _speedRun));
                     _animationController.SetSpeed_and_strafe(_z * 1.8f, _x);
                     _shakeCamera.SetShakeCamera(2.5f);
                 }
                 else
-                {
+                {*/
                     _rigidbody.AddRelativeForce(AplyNewVector(ref _x, ref _z, ref _speedWalk));
                     _animationController.SetSpeed_and_strafe(_z, _x);
                     _shakeCamera.SetShakeCamera(1.5f);
-                }
+                //}
             }
             else
             {
