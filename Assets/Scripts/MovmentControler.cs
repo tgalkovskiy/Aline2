@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Presenter;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace PlayerNamaspase
 {
@@ -53,6 +54,10 @@ namespace PlayerNamaspase
             if (Input.GetKeyDown(KeyCode.F))
             {
                 View._Instance.ExecuteAction();
+            }
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                SceneManager.LoadScene(0);
             }
         }
 
