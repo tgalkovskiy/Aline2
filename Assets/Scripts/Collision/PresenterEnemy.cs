@@ -17,6 +17,8 @@
             _modelPlayer._Blood += _view.SpawnBloodPlayer;
             _modelPlayer._ShotAction += _view.UpdateAmmo;
             _modelPlayer._ActionShow += _view.ShowAction;
+            //TODO: move Save in place when new level loaded
+            _modelPlayer.Save();
         }
 
         private View _view;
