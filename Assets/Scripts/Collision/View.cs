@@ -41,23 +41,30 @@ namespace Presenter
            
            _uiHolder._hpSlider.maxValue = _configurationPlayer.health;
            _uiHolder._hpSlider.value = _configurationPlayer.health;
+           
            _uiHolder._armor.maxValue = _configurationPlayer.armor;
            _uiHolder._armor.value = _configurationPlayer.armor;
+           
            //_uiHolder._experience.maxValue = _configurationPlayer.exp;
            _uiHolder._experience.value = _configurationPlayer.exp;
+           
            _uiHolder._nowHp.text = _configurationPlayer.health.ToString();
-           _uiHolder._ammo.text = _configurationPlayer.ammo.ToString();
+           //_uiHolder._ammo.text = _configurationPlayer.rifleAmmo.ToString();
            _uiHolder._armorText.text = _configurationPlayer.armor.ToString();
            _uiHolder._experienceNowText.text = _configurationPlayer.exp.ToString();
        }
-       public bool Shot()
+       public bool Shot(TypeGun typeGun)
        {
-           return _presenterPlayer.Shot();
+           return _presenterPlayer.Shot(typeGun);
        }
        public void ShowAction(bool isShow)
        {
            _uiHolder._ActionText.SetActive(isShow);
            isExecute = isShow;
+       }
+       public void ChangeGun(TypeGun typeGun)
+       {
+           _presenterPlayer.ChangeGun(typeGun);
        }
        public void ExecuteAction()
        {

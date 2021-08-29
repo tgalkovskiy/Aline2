@@ -1,5 +1,6 @@
 ﻿
     using System;
+    using System.Diagnostics;
     using UnityEngine;
 
     public class ModelPlayer
@@ -8,15 +9,26 @@
         {
             _hpPlayer = _configurationPlayer.health;
             _armor = _configurationPlayer.armor;
-            _ammo = _configurationPlayer.ammo;
+            _rifleAmmo = _configurationPlayer.rifleAmmo;
+            _shotGunAmmo = _configurationPlayer.shotGunAmmo;
+            _machineGunAmmo = _configurationPlayer.machineGunAmmo;
+            _rocketGunAmmo = _configurationPlayer.rocketGunAmmo;
+            _plasmaGunAmmo = _configurationPlayer.plasmaGunAmmo;
+            _flamethrowerGunAmmo = _configurationPlayer.flamethrowerGunAmmo;
             configurationPlayer = _configurationPlayer;
             _hedgehog = _configurationPlayer.hedgehog;
             _vampirism = _configurationPlayer.vampirism;
-            _timeStop = configurationPlayer.timeStop;
-            _exp = configurationPlayer.exp;
+            _timeStop = _configurationPlayer.timeStop;
+            _exp = _configurationPlayer.exp;
         }
         private int _hpPlayer;
-        private int _ammo;
+        private int  _rifleAmmo;
+        private int  _shotGunAmmo;
+        private int  _machineGunAmmo;
+        private int  _rocketGunAmmo;
+        private int  _plasmaGunAmmo;
+        private int  _flamethrowerGunAmmo;
+      
         private int _armor;
         private int _exp;
         private bool _hedgehog = false;
@@ -42,7 +54,6 @@
         {
             configurationPlayer.Load();
         }
-
         public void Save()
         {
             configurationPlayer.Save();
@@ -78,17 +89,48 @@
                 _Blood.Invoke();
             }
         }
-        public bool Shot()
+        public bool m_Shot(TypeGun typeGun)
         {
-             _ShotAction.Invoke(_ammo);
+            int _ammo = 0;
+            switch (typeGun)
+            {
+                case TypeGun.Rifle: _ammo = _rifleAmmo; break;
+                case TypeGun.ShotGun: _ammo = _shotGunAmmo; break;
+                case TypeGun.MachineGun: _ammo = _machineGunAmmo; break;
+                case TypeGun.PlasmaGun: _ammo = _plasmaGunAmmo; break;
+                case TypeGun.RocketGun: _ammo = _rocketGunAmmo; break;
+                case TypeGun.FlamethrowerGun: _ammo = _flamethrowerGunAmmo; break;
+            }
             if (_ammo > 0)
             {
                 _ammo--;
+                _ShotAction.Invoke(_ammo);
+                switch (typeGun)
+                {
+                    case TypeGun.Rifle:  _rifleAmmo =_ammo; break;
+                    case TypeGun.ShotGun: _shotGunAmmo =_ammo; break;
+                    case TypeGun.MachineGun: _machineGunAmmo =_ammo; break;
+                    case TypeGun.PlasmaGun: _plasmaGunAmmo = _ammo; break;
+                    case TypeGun.RocketGun: _rocketGunAmmo = _ammo; break;
+                    case TypeGun.FlamethrowerGun: _flamethrowerGunAmmo = _ammo; break;
+                }
                 return true; 
             }
             else
             {
                 return false;
+            }
+        }
+        public void m_ChangeGun(TypeGun typeGun)
+        {
+            switch (typeGun)
+            {
+                case TypeGun.Rifle: _ShotAction.Invoke(_rifleAmmo); break;
+                case TypeGun.ShotGun: _ShotAction.Invoke(_shotGunAmmo); break;
+                case TypeGun.MachineGun: _ShotAction.Invoke(_machineGunAmmo); break;
+                case TypeGun.PlasmaGun: _ShotAction.Invoke(_plasmaGunAmmo); break;
+                case TypeGun.RocketGun: _ShotAction.Invoke(_rocketGunAmmo); break;
+                case TypeGun.FlamethrowerGun: _ShotAction.Invoke(_flamethrowerGunAmmo); break;
             }
         }
         public void m_ShowAction(bool isShow)
@@ -106,12 +148,11 @@
             {
                 _hpPlayer = Mathf.Clamp(_hpPlayer + _value, 0, configurationPlayer.health);
                 _hpPlayerAction?.Invoke(_hpPlayer);
-                
             }
             if (_typeAction == TypeAction.AddAmmo)
             {
-                _ammo += _value;
-                _ShotAction.Invoke(_ammo);
+                //_ammo += _value;
+                //_ShotAction.Invoke(_ammo);
             }
         }
         public void m_ExecuteVampirism()

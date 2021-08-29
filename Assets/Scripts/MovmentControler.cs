@@ -22,6 +22,7 @@ namespace PlayerNamaspase
         private float mouseX;
         private bool run = false;
         public event Action ShootEvent;
+        public event Action<TypeGun> ChangeGun;
 
         private void Start()
         {
@@ -49,29 +50,26 @@ namespace PlayerNamaspase
             {
                 ShootEvent?.Invoke();
             }
-
             if (Input.GetKeyDown(KeyCode.F))
             {
                 View._Instance.ExecuteAction();
             }
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                ChangeGun(TypeGun.Rifle);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                ChangeGun(TypeGun.ShotGun);
+            }
         }
-
         private void FixedUpdate()
         {
             if(_x != 0 || _z != 0)
             {
-                /*if (Input.GetKey(KeyCode.LeftShift))
-                {
-                    _rigidbody.AddRelativeForce(AplyNewVector(ref _x, ref _z, ref _speedRun));
-                    _animationController.SetSpeed_and_strafe(_z * 1.8f, _x);
-                    _shakeCamera.SetShakeCamera(2.5f);
-                }
-                else
-                {*/
-                    _rigidbody.AddRelativeForce(AplyNewVector(ref _x, ref _z, ref _speedWalk));
-                    _animationController.SetSpeed_and_strafe(_z, _x);
-                    _shakeCamera.SetShakeCamera(1.5f);
-                //}
+                _rigidbody.AddRelativeForce(AplyNewVector(ref _x, ref _z, ref _speedWalk));
+                _animationController.SetSpeed_and_strafe(_z, _x);
+                _shakeCamera.SetShakeCamera(1.5f);
             }
             else
             {

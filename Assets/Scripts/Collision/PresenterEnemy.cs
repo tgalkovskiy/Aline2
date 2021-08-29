@@ -35,9 +35,13 @@
         {
             _modelPlayer.m_GetDamage(damage);
         }
-        public bool Shot()
+        public bool Shot(TypeGun typeGun)
         {
-            return _modelPlayer.Shot();
+            return _modelPlayer.m_Shot(typeGun);
+        }
+        public void ChangeGun(TypeGun typeGun)
+        {
+            _modelPlayer.m_ChangeGun(typeGun);
         }
         public void DOShowShowAction(bool isShow)
         {

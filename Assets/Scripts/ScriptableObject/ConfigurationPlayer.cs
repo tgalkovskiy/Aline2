@@ -32,7 +32,12 @@ public class ConfigurationPlayer : ScriptableObject
 {
     public int  health;
     public int  damage;
-    public int  ammo;
+    public int  rifleAmmo;
+    public int  shotGunAmmo;
+    public int  machineGunAmmo;
+    public int  rocketGunAmmo;
+    public int  plasmaGunAmmo;
+    public int  flamethrowerGunAmmo;
     public int  armor;
     public int  exp;
     public bool hedgehog = false;
@@ -59,7 +64,7 @@ public class ConfigurationPlayer : ScriptableObject
     }
     public void SetUpAmmo()
     {
-        ammo = 150;
+        //ammo = 150;
     }
     public void SetUpDamage()
     {
@@ -136,7 +141,7 @@ public class ConfigurationPlayer : ScriptableObject
     public void SetDefault()
     {
         health = 100;
-        ammo = 50;
+        //ammo = 50;
         damage = 15;
         armor = 25;
         hedgehog = false;
@@ -163,7 +168,7 @@ public class ConfigurationPlayer : ScriptableObject
         Data _data = new Data();
         _data.health=health;
         _data.damage=damage;
-        _data.ammo=ammo;
+        //_data.ammo=ammo;
         _data.armor=armor;
         _data.exp=exp;
         _data.hedgehog=hedgehog;
@@ -203,7 +208,7 @@ public class ConfigurationPlayer : ScriptableObject
             _data = JsonUtility.FromJson<Data>(File.ReadAllText(Path.Combine(Application.persistentDataPath, "AlienSave.Json")));
             health = _data.health;
             damage = _data.damage;
-            ammo = _data.ammo;
+            //ammo = _data.ammo;
             armor = _data.armor;
             exp = _data.exp;
             hedgehog = _data.hedgehog;

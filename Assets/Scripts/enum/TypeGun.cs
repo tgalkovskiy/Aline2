@@ -1,12 +1,10 @@
 
 public enum TypeGun 
 {
-   Knife,
-   Pistol,
-   TommyGun,
-   MachineGun,
+   Rifle,
    ShotGun,
+   MachineGun,
    RocketGun,
-   SniperGun,
+   PlasmaGun,
    FlamethrowerGun,
 }

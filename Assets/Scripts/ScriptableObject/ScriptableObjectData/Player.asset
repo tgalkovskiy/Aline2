@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82981f90475953418d9f3364b39fe0c, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  health: 100
+  health: 150
   damage: 15
-  ammo: 50
+  rifleAmmo: 50
+  shotGunAmmo: 25
+  machineGunAmmo: 1
+  rocketGunAmmo: 1
+  plasmaGunAmmo: 0
+  flamethrowerGunAmmo: 1
   armor: 25
   exp: 0
   hedgehog: 0
@@ -22,7 +27,6 @@ MonoBehaviour:
   timeStop: 0
   geneMode: 0
   fineder: 0
-  roboGolem: 0
   viking: 0
   nuclear: 0
   spaunkiller: 0

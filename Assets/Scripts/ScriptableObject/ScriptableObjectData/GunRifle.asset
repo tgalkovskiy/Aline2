@@ -12,12 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8cb4283271e9a847bab5c17a5d8c392, type: 3}
   m_Name: GunRifle
   m_EditorClassIdentifier: 
-  typeGun: 2
-  spawnPointBullet: {x: 0, y: 1, z: 0}
-  bulletPrefab: {fileID: 1296238697623205580, guid: 8f5d4a861914a314d960f6a55c465d3a, type: 3}
-  damage: 5
-  bullets: 0
-  shotDelay: 0
-  reloadTime: 0
-  velocityImpulse: 0
-  weaponSpreed: 0
+  typeGun: 0
+  bulletPrefab: {fileID: 8245566956763778590, guid: 5998279efd2ebe542b88c7234c8d0816, type: 3}
+  damage: 10
+  speedBullet: 3000
+  countBullet: 1
