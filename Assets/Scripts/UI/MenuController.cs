@@ -8,6 +8,8 @@ public class MenuController : MonoBehaviour
     [SerializeField] private ConfigurationPlayer _configurationPlayer = default;
     [SerializeField] private GameObject _choiceSkills = default;
     [SerializeField] private GameObject _resumeButton = default;
+    [SerializeField] private GameObject _newGameButton = default;
+    [SerializeField] private GameObject _playButton = default;
 
     private void Awake()
     {
@@ -19,7 +21,10 @@ public class MenuController : MonoBehaviour
     public void ChoiceSkills()
     {
         _choiceSkills.SetActive(true);
-        
+        _playButton.SetActive(true);
+        _resumeButton.SetActive(false);
+        _newGameButton.SetActive(false);
+
     }
     public void Play(int scene = 1)
     {
@@ -30,6 +35,11 @@ public class MenuController : MonoBehaviour
     {
         _configurationPlayer.Load();
         Play();
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
     
 }
