@@ -5,41 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] private ConfigurationPlayer _configurationPlayer = default;
     [SerializeField] private GameObject _choiceSkills = default;
-    [SerializeField] private GameObject _resumeButton = default;
-    [SerializeField] private GameObject _newGameButton = default;
-    [SerializeField] private GameObject _playButton = default;
-
-    private void Awake()
-    {
-        if (_configurationPlayer.HasSave())
-        {
-            _resumeButton.SetActive(true);
-        }
-    }
     public void ChoiceSkills()
     {
         _choiceSkills.SetActive(true);
-        _playButton.SetActive(true);
-        _resumeButton.SetActive(false);
-        _newGameButton.SetActive(false);
-
+        
     }
-    public void Play(int scene = 1)
+    public void Play()
     {
-        SceneManager.LoadScene(scene > 0 ? scene : 1);
-    }
-
-    public void Resume()
-    {
-        _configurationPlayer.Load();
-        Play();
-    }
-
-    public void Exit()
-    {
-        Application.Quit();
+        SceneManager.LoadScene(1);
     }
     
 }

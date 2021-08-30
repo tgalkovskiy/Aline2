@@ -36,8 +36,8 @@ public class SkillsPlayer : MonoBehaviour
             }
             else
             {
-                _skillsImage[i].transform.DOScale(Vector3.one*1.2f, 0.2f);
-                _skillsImage[i].GetComponent<Image>().color = new Color(217 / 255, 1, 1);
+                _skillsImage[i].transform.DOScale(Vector3.one*1.2f, 0.2f); 
+                _skillsImage[i].GetComponent<Image>().color = Color.green;
             }
         }
         _configurationPlayer.SetDefault();
