@@ -123,7 +123,6 @@ namespace Presenter
        {
            _presenterPlayer.GetExp(exp);
        }
-       
        public void RemovePresenter_and_Model(CollisionDetected _collisionDetected)
        {
            _enemy.RemoveAt(_enemy.FindIndex(x => x.name ==_collisionDetected.name));
