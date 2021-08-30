@@ -82,6 +82,7 @@
                     {
                         _hpPlayerDie.Invoke();
                         isLife = false;
+                        
                     }
                     _hpPlayerAction.Invoke(_hpPlayer);
                 }

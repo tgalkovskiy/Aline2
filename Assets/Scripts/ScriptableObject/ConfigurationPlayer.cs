@@ -13,9 +13,9 @@ public class Data
     public bool vampirism;
     public bool timeStop; 
     public bool geneMode;
-    public bool fineder ;
+    public bool fineder;
     public bool viking;
-    public bool nuclear ;
+    public bool nuclear;
     public bool spaunkiller;
     public bool insectKiller;
     public bool crioptic;
@@ -190,7 +190,6 @@ public class ConfigurationPlayer : ScriptableObject
         try
         {
             File.WriteAllText(Path.Combine(Application.persistentDataPath, "AlienSave.Json"), JsonUtility.ToJson(_data));
-            Debug.Log(1);
         }
         catch (Exception e)
         {
@@ -201,9 +200,8 @@ public class ConfigurationPlayer : ScriptableObject
     }
     public void Load()
     {
-        if (File.Exists(Path.Combine(Application.persistentDataPath, "AlienSave.Json")))
+        if (HasSave())
         {
-            Debug.Log(2);
             Data _data = new Data();
             _data = JsonUtility.FromJson<Data>(File.ReadAllText(Path.Combine(Application.persistentDataPath, "AlienSave.Json")));
             health = _data.health;
@@ -233,4 +231,6 @@ public class ConfigurationPlayer : ScriptableObject
             Debug.Log("file not exists");
         }
     }
+
+    public bool HasSave() => File.Exists(Path.Combine(Application.persistentDataPath, "AlienSave.Json"));
 }
