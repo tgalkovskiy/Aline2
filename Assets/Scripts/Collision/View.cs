@@ -17,6 +17,7 @@ namespace Presenter
        [SerializeField] private UiHolder _uiHolder = default;
        [SerializeField] private SpawnOtherObj spawnOtherObj = default;
        [SerializeField] private Animator _playerAnimator = default;
+       [SerializeField] private Image _image;
        private List<CollisionDetected> _enemy = new List<CollisionDetected>();
        private PresenterPlayer _presenterPlayer;
        private List<PresenterEnemy> _presenters = new List<PresenterEnemy>();
@@ -49,6 +50,7 @@ namespace Presenter
            _uiHolder._ammo.text = _configurationPlayer.ammo.ToString();
            _uiHolder._armorText.text = _configurationPlayer.armor.ToString();
            _uiHolder._experienceNowText.text = _configurationPlayer.exp.ToString();
+
        }
        public bool Shot()
        {
@@ -91,6 +93,7 @@ namespace Presenter
        {
            _player.gameObject.GetComponent<MovmentControler>().enabled = false;
            _playerAnimator.SetTrigger("Die");
+           _image.IsActive();
        }
        public void AddPresenter_and_Model(CollisionDetected _collisionDetected)
        {
