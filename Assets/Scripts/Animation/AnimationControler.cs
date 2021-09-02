@@ -6,7 +6,9 @@ using UnityEngine;
 public class AnimationControler : MonoBehaviour
 {
     [SerializeField] private Rigidbody[] _rb = default;
-    [SerializeField] private Collider[] _capsuleColliders = default; 
+    [SerializeField] private Collider[] _capsuleColliders = default;
+    [SerializeField] private Collider _mainCollider = default;
+    [SerializeField] private Rigidbody _playerRigidbody = default;
     private Animator _animator;
     
     private void Awake()
@@ -16,7 +18,7 @@ public class AnimationControler : MonoBehaviour
         
         foreach (var I in _rb)
         {
-            I.isKinematic = false;
+            I.isKinematic = true;
         }
         foreach (var I in _capsuleColliders)
         {
@@ -37,14 +39,16 @@ public class AnimationControler : MonoBehaviour
     public void Die()
     {
         _animator.enabled = false;
+        _playerRigidbody.isKinematic = true;
         foreach (var I in _rb)
         {
-            I.isKinematic = true;
+            I.isKinematic = false;
         }
         foreach (var I in _capsuleColliders)
         {
             I.enabled = true;
         }
+        _mainCollider.enabled = false;
     }
 
 }
