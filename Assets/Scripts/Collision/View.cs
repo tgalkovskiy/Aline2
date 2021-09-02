@@ -96,8 +96,9 @@ namespace Presenter
        }
        public void DiePlayer()
        {
+           _player.transform.GetChild(0).GetComponent<AnimationControler>().Die();
            _player.gameObject.GetComponent<MovmentControler>().enabled = false;
-           _playerAnimator.SetTrigger("Die");
+           //_playerAnimator.SetTrigger("Die");
        }
        public void AddPresenter_and_Model(CollisionDetected _collisionDetected)
        {
