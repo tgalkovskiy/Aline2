@@ -60,7 +60,7 @@ public class Gun : MonoBehaviour
                 switch (typeGun)
                 {
                     case TypeGun.Rifle: _velosity = Vector3.forward; break;
-                    case TypeGun.ShotGun: _velosity = new Vector3(Random.Range(-0.1f, 0.1f), 0, 1); break;
+                    case TypeGun.ShotGun: _velosity = new Vector3(Random.Range(-0.05f, 0.05f), Random.Range(-0.1f, 0.1f), Random.Range(0.9f, 1.1f)); break;
                 }
                 _bullet.GetComponent<Rigidbody>().AddRelativeForce(_velosity*speedBullet, ForceMode.Acceleration);
             }
@@ -75,6 +75,7 @@ public class Gun : MonoBehaviour
             {
                 SetNewConfigurationGun(gunsConfig[i]);
                 guns[i].SetActive(true);
+                _posSpawn = guns[i].transform.GetChild(0).transform;
             }
         }
         _view.ChangeGun(typeGun);

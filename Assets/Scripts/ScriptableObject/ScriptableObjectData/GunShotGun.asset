@@ -15,5 +15,5 @@ MonoBehaviour:
   typeGun: 1
   bulletPrefab: {fileID: 6215736711800238297, guid: 3fa6deb0e6e215141b8c3a321b461496, type: 3}
   damage: 30
-  speedBullet: 1000
-  countBullet: 5
+  speedBullet: 2000
+  countBullet: 10
