@@ -62,7 +62,7 @@ public class Gun : MonoBehaviour
                 {
                     case TypeGun.Rifle: _velosity = Vector3.forward; break;
                     case TypeGun.ShotGun: _velosity = new Vector3(Random.Range(-0.05f, 0.05f), Random.Range(-0.1f, 0.1f), Random.Range(0.9f, 1.1f)); break;
-                    
+                    case TypeGun.MachineGun: _velosity = Vector3.forward; break;
                 }
                 _bullet.GetComponent<Rigidbody>().AddRelativeForce(_velosity*speedBullet, ForceMode.Acceleration);
             }
