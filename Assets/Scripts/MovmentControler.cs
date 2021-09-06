@@ -62,6 +62,10 @@ namespace PlayerNamaspase
             {
                 ChangeGun(TypeGun.ShotGun);
             }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                ChangeGun(TypeGun.MachineGun);
+            }
         }
         private void FixedUpdate()
         {
