@@ -13,14 +13,14 @@ public class Gun : MonoBehaviour
     [SerializeField] private List<GameObject> guns = new List<GameObject>();
     [SerializeField] private Transform _posSpawn;
     private AnimationControler _animationController;
-    
+
     public TypeGun typeGun;
     private GameObject bulletPrefab;
     private int damageGun;
     private bool isShoot = true;
     public int speedBullet;
     public int countBullet;
-    
+
     private MovmentControler movmentControler;
     private View _view;
     private Vector3 _velosity = Vector3.forward;
@@ -38,7 +38,7 @@ public class Gun : MonoBehaviour
 
     private void Awake()
     {
-         _animationController=transform.GetChild(0).GetComponent<AnimationControler>();
+        _animationController = transform.GetChild(0).GetComponent<AnimationControler>();
         movmentControler = GetComponent<MovmentControler>();
         _view = View._Instance;
     }
@@ -47,30 +47,20 @@ public class Gun : MonoBehaviour
     {
         SetNewConfigurationGun(gunsConfig[0]);
     }
-    
     private void OnShoot()
     {
-        if(_view.Shot(typeGun))
+        if (_view.Shot(typeGun))
         {
             _animationController.ShotAnimation();
             for (int i = 0; i < countBullet; i++)
             {
-
-                var _bullet = Instantiate(bulletPrefab, _posSpawn.position, transform.rotation);
-                _bullet.GetComponent<GunDestroyer>().damage =damageGun;
-                switch (typeGun)
-                {
-                    case TypeGun.Rifle: _velosity = Vector3.forward; break;
-                    case TypeGun.ShotGun: _velosity = new Vector3(Random.Range(-0.05f, 0.05f), Random.Range(-0.1f, 0.1f), Random.Range(0.9f, 1.1f)); break;
-                    case TypeGun.MachineGun: _velosity = Vector3.forward; break;
-                }
-                _bullet.GetComponent<Rigidbody>().AddRelativeForce(_velosity*speedBullet, ForceMode.Acceleration);
+                StartCoroutine(EShootBullet(typeGun == TypeGun.MachineGun ? .2f * i : 0));
             }
         }
     }
     public void ChangeWeapon(TypeGun gun)
     {
-        for(int i = 0; i < gunsConfig.Count; i++)
+        for (int i = 0; i < gunsConfig.Count; i++)
         {
             guns[i].SetActive(false);
             if (gunsConfig[i].typeGun == gun)
@@ -92,5 +82,18 @@ public class Gun : MonoBehaviour
         countBullet = configurationGun.countBullet;
     }
 
-   
+    IEnumerator EShootBullet(float delay = 0)
+    {
+        yield return new WaitForSeconds(delay);
+        var _bullet = Instantiate(bulletPrefab, _posSpawn.position, transform.rotation);
+        _bullet.GetComponent<GunDestroyer>().damage = damageGun;
+        switch (typeGun)
+        {
+            case TypeGun.Rifle:
+            case TypeGun.MachineGun:
+                _velosity = Vector3.forward; break;
+            case TypeGun.ShotGun: _velosity = new Vector3(Random.Range(-0.05f, 0.05f), Random.Range(-0.1f, 0.1f), Random.Range(0.9f, 1.1f)); break;
+        }
+        _bullet.GetComponent<Rigidbody>().AddRelativeForce(_velosity * speedBullet, ForceMode.Acceleration);
+    }
 }

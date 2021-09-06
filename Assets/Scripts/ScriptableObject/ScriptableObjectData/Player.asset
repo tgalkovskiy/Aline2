@@ -16,7 +16,7 @@ MonoBehaviour:
   damage: 15
   rifleAmmo: 50
   shotGunAmmo: 25
-  machineGunAmmo: 1
+  machineGunAmmo: 50
   rocketGunAmmo: 1
   plasmaGunAmmo: 0
   flamethrowerGunAmmo: 1
