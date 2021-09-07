@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.1873118, g: 0.22719434, b: 0.28649205, a: 1}
+  m_IndirectSpecularColor: {r: 0.18731138, g: 0.22719371, b: 0.28649166, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5584,6 +5584,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ac6c8f32a8b3114f8c36c2815f09d4f, type: 3}
+--- !u!1 &765671047 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7937144130772542906, guid: 223ccd3a476db944ba33199385750310, type: 3}
+  m_PrefabInstance: {fileID: 3320728960325253647}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &772077564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11288,6 +11293,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1803957914 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2682272316144474363, guid: 223ccd3a476db944ba33199385750310, type: 3}
+  m_PrefabInstance: {fileID: 3320728960325253647}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1817149517
 GameObject:
   m_ObjectHideFlags: 0
@@ -12680,6 +12690,10 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: -0.021769973
       objectReference: {fileID: 0}
+    - target: {fileID: 2682272316144474363, guid: 223ccd3a476db944ba33199385750310, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2745146981540354898, guid: 223ccd3a476db944ba33199385750310, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: -0.0011640767
@@ -12762,7 +12776,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3320728961457770778, guid: 223ccd3a476db944ba33199385750310, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3330331411981897234, guid: 223ccd3a476db944ba33199385750310, type: 3}
       propertyPath: m_ConnectedAnchor.z
@@ -12790,12 +12804,20 @@ PrefabInstance:
       objectReference: {fileID: 1698300447}
     - target: {fileID: 4129292811052112341, guid: 223ccd3a476db944ba33199385750310, type: 3}
       propertyPath: guns.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4129292811052112341, guid: 223ccd3a476db944ba33199385750310, type: 3}
       propertyPath: guns.Array.data[2]
       value: 
       objectReference: {fileID: 304202287}
+    - target: {fileID: 4129292811052112341, guid: 223ccd3a476db944ba33199385750310, type: 3}
+      propertyPath: guns.Array.data[3]
+      value: 
+      objectReference: {fileID: 765671047}
+    - target: {fileID: 4129292811052112341, guid: 223ccd3a476db944ba33199385750310, type: 3}
+      propertyPath: guns.Array.data[4]
+      value: 
+      objectReference: {fileID: 1803957914}
     - target: {fileID: 4129292811052112341, guid: 223ccd3a476db944ba33199385750310, type: 3}
       propertyPath: gunsConfig.Array.size
       value: 3
