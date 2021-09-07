@@ -8,9 +8,13 @@ public class GunDestroyer : MonoBehaviour
     [HideInInspector]public int damage;
     [SerializeField] private GameObject _effect = default;
     [SerializeField] private GameObject _bulletBody = default;
+    [SerializeField] private bool _destroy = true;
     private void OnCollisionEnter(Collision other)
     {
-        StartCoroutine(Destroy(other.transform.eulerAngles));
+        if (_destroy)
+        {
+            StartCoroutine(Destroy(other.transform.eulerAngles));
+        }
     }
 
     IEnumerator Destroy(Vector3 rot)
