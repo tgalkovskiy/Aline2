@@ -66,6 +66,14 @@ namespace PlayerNamaspase
             {
                 ChangeGun(TypeGun.MachineGun);
             }
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                ChangeGun(TypeGun.RocketGun);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                ChangeGun(TypeGun.PlasmaGun);
+            }
         }
         private void FixedUpdate()
         {
