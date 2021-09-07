@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18731138, g: 0.22719371, b: 0.28649166, a: 1}
+  m_IndirectSpecularColor: {r: 0.18731147, g: 0.22719389, b: 0.28649166, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12692,7 +12692,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2682272316144474363, guid: 223ccd3a476db944ba33199385750310, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2745146981540354898, guid: 223ccd3a476db944ba33199385750310, type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -12776,7 +12776,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3320728961457770778, guid: 223ccd3a476db944ba33199385750310, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3330331411981897234, guid: 223ccd3a476db944ba33199385750310, type: 3}
       propertyPath: m_ConnectedAnchor.z
@@ -12820,12 +12820,20 @@ PrefabInstance:
       objectReference: {fileID: 1803957914}
     - target: {fileID: 4129292811052112341, guid: 223ccd3a476db944ba33199385750310, type: 3}
       propertyPath: gunsConfig.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4129292811052112341, guid: 223ccd3a476db944ba33199385750310, type: 3}
       propertyPath: gunsConfig.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: 8eb58ff476e4c476d86b80df5891fb76, type: 2}
+    - target: {fileID: 4129292811052112341, guid: 223ccd3a476db944ba33199385750310, type: 3}
+      propertyPath: gunsConfig.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1f14587ec16e545df82071ab4e0077f8, type: 2}
+    - target: {fileID: 4129292811052112341, guid: 223ccd3a476db944ba33199385750310, type: 3}
+      propertyPath: gunsConfig.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 857aad9a6efbc4a8f8365653cc85e1c5, type: 2}
     - target: {fileID: 4620682343726503163, guid: 223ccd3a476db944ba33199385750310, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -12913,6 +12921,10 @@ PrefabInstance:
     - target: {fileID: 7725822921480480890, guid: 223ccd3a476db944ba33199385750310, type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: 0.020316947
+      objectReference: {fileID: 0}
+    - target: {fileID: 7937144130772542906, guid: 223ccd3a476db944ba33199385750310, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7966983584926164861, guid: 223ccd3a476db944ba33199385750310, type: 3}
       propertyPath: m_ConnectedAnchor.y
