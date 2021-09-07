@@ -12,12 +12,13 @@ public class Gun : MonoBehaviour
     [SerializeField] private List<ConfigurationGun> gunsConfig = new List<ConfigurationGun>();
     [SerializeField] private List<GameObject> guns = new List<GameObject>();
     [SerializeField] private Transform _posSpawn;
+    private Transform _bulletSpawn;
+    private bool _bulletActive;
     private AnimationControler _animationController;
 
     public TypeGun typeGun;
     private GameObject bulletPrefab;
     private int damageGun;
-    private bool isShoot = true;
     public int speedBullet;
     public int countBullet;
 
@@ -41,16 +42,30 @@ public class Gun : MonoBehaviour
         _animationController = transform.GetChild(0).GetComponent<AnimationControler>();
         movmentControler = GetComponent<MovmentControler>();
         _view = View._Instance;
+        Debug.Log(View._Instance);
     }
 
     private void Start()
     {
         SetNewConfigurationGun(gunsConfig[0]);
     }
-    private void OnShoot()
+    private void OnShoot(bool isShoot = true)
     {
+        if (!isShoot)
+        {
+            _bulletSpawn?.gameObject.SetActive(false);
+            _bulletActive = false;
+            return;
+        }
         if (_view.Shot(typeGun))
         {
+            if (typeGun == TypeGun.FlamethrowerGun) {
+                _bulletSpawn.gameObject.SetActive(true);
+                _bulletSpawn.GetComponent<GunDestroyer>().damage = damageGun;
+                _bulletActive = true;
+                StartCoroutine(EContiniousShoot());
+                return;
+            }
             _animationController.ShotAnimation();
             for (int i = 0; i < countBullet; i++)
             {
@@ -67,7 +82,8 @@ public class Gun : MonoBehaviour
             {
                 SetNewConfigurationGun(gunsConfig[i]);
                 guns[i].SetActive(true);
-                _posSpawn = guns[i].transform.GetChild(0).transform;
+                _bulletSpawn = guns[i].transform.GetChild(0);
+                _posSpawn = _bulletSpawn.transform;
             }
         }
         _view.ChangeGun(typeGun);
@@ -95,5 +111,15 @@ public class Gun : MonoBehaviour
             case TypeGun.ShotGun: _velosity = new Vector3(Random.Range(-0.05f, 0.05f), Random.Range(-0.1f, 0.1f), Random.Range(0.9f, 1.1f)); break;
         }
         _bullet.GetComponent<Rigidbody>().AddRelativeForce(_velosity * speedBullet, ForceMode.Acceleration);
+    }
+
+    IEnumerator EContiniousShoot()
+    {
+        yield return new WaitForSeconds(.5f);
+        if (_bulletActive)
+        {
+            _view.Shot(typeGun);
+            StartCoroutine(EContiniousShoot());
+        }
     }
 }

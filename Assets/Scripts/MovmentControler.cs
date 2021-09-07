@@ -21,7 +21,7 @@ namespace PlayerNamaspase
         private float _z;
         private float mouseX;
         private bool run = false;
-        public event Action ShootEvent;
+        public event Action<bool> ShootEvent;
         public event Action<TypeGun> ChangeGun;
 
         private void Start()
@@ -48,7 +48,11 @@ namespace PlayerNamaspase
             }
             if (Input.GetMouseButtonDown(0))
             {
-                ShootEvent?.Invoke();
+                ShootEvent?.Invoke(true);
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                ShootEvent?.Invoke(false);
             }
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -68,7 +72,7 @@ namespace PlayerNamaspase
             }
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
-                ChangeGun(TypeGun.RocketGun);
+                ChangeGun(TypeGun.FlamethrowerGun);
             }
             if (Input.GetKeyDown(KeyCode.Alpha5))
             {

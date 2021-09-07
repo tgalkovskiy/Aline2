@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8cb4283271e9a847bab5c17a5d8c392, type: 3}
-  m_Name: GunHellWailer
+  m_Name: GunFireGun
   m_EditorClassIdentifier: 
-  typeGun: 3
-  bulletPrefab: {fileID: 0}
-  damage: 20
+  typeGun: 5
+  bulletPrefab: {fileID: 144206, guid: eecfd95aa06159440b824635d22e0f24, type: 3}
+  damage: 3
   speedBullet: 3000
-  countBullet: 50
+  countBullet: 1

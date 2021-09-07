@@ -19,7 +19,7 @@ MonoBehaviour:
   machineGunAmmo: 50
   rocketGunAmmo: 1
   plasmaGunAmmo: 0
-  flamethrowerGunAmmo: 1
+  flamethrowerGunAmmo: 100
   armor: 25
   exp: 0
   hedgehog: 0
