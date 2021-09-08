@@ -11,6 +11,8 @@ public class Gun : MonoBehaviour
 {
     [SerializeField] private List<ConfigurationGun> gunsConfig = new List<ConfigurationGun>();
     [SerializeField] private List<GameObject> guns = new List<GameObject>();
+    [SerializeField] private GameObject _granade = default;
+    [SerializeField] private Transform _posSpawnGranade = default;
     [SerializeField] private Transform _posSpawn;
     private Transform _bulletSpawn;
     private bool _bulletActive;
@@ -19,8 +21,8 @@ public class Gun : MonoBehaviour
     public TypeGun typeGun;
     private GameObject bulletPrefab;
     private int damageGun;
-    public int speedBullet;
-    public int countBullet;
+    private int speedBullet;
+    private int countBullet;
 
     private MovmentControler movmentControler;
     private View _view;
@@ -29,12 +31,14 @@ public class Gun : MonoBehaviour
     {
         movmentControler.ShootEvent += OnShoot;
         movmentControler.ChangeGun += ChangeWeapon;
+        movmentControler.GrenadeThrow += ThowGranade;
     }
 
     private void OnDisable()
     {
         movmentControler.ShootEvent -= OnShoot;
         movmentControler.ChangeGun -= ChangeWeapon;
+        movmentControler.GrenadeThrow -= ThowGranade;
     }
 
     private void Awake()
@@ -42,7 +46,6 @@ public class Gun : MonoBehaviour
         _animationController = transform.GetChild(0).GetComponent<AnimationControler>();
         movmentControler = GetComponent<MovmentControler>();
         _view = View._Instance;
-        Debug.Log(View._Instance);
     }
 
     private void Start()
@@ -89,6 +92,12 @@ public class Gun : MonoBehaviour
         _view.ChangeGun(typeGun);
     }
 
+    private void ThowGranade()
+    {
+        var granade = Instantiate(_granade, _posSpawnGranade.position, transform.rotation);
+        granade.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward*700, ForceMode.Acceleration);
+
+    }
     private void SetNewConfigurationGun(ConfigurationGun configurationGun)
     {
         typeGun = configurationGun.typeGun;
