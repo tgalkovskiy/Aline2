@@ -9,17 +9,19 @@ using Random = UnityEngine.Random;
 
 public class Gun : MonoBehaviour
 {
+    [SerializeField] private GameObject Granate;
     [SerializeField] private List<ConfigurationGun> gunsConfig = new List<ConfigurationGun>();
     [SerializeField] private List<GameObject> guns = new List<GameObject>();
     [SerializeField] private Transform _posSpawn;
+    [SerializeField] private Transform _posSpawnGrenade;
     private AnimationControler _animationController;
     
     public TypeGun typeGun;
     private GameObject bulletPrefab;
     private int damageGun;
     private bool isShoot = true;
-    public int speedBullet;
-    public int countBullet;
+    private int speedBullet;
+    private int countBullet;
     
     private MovmentControler movmentControler;
     private View _view;
@@ -28,12 +30,14 @@ public class Gun : MonoBehaviour
     {
         movmentControler.ShootEvent += OnShoot;
         movmentControler.ChangeGun += ChangeWeapon;
+        movmentControler.GrenadeThrow += TrownGranete;
     }
 
     private void OnDisable()
     {
         movmentControler.ShootEvent -= OnShoot;
         movmentControler.ChangeGun -= ChangeWeapon;
+        movmentControler.GrenadeThrow -= TrownGranete;
     }
 
     private void Awake()
@@ -60,7 +64,7 @@ public class Gun : MonoBehaviour
                 switch (typeGun)
                 {
                     case TypeGun.Rifle: _velosity = Vector3.forward; break;
-                    case TypeGun.ShotGun: _velosity = new Vector3(Random.Range(-0.05f, 0.05f), Random.Range(-0.1f, 0.1f), Random.Range(0.9f, 1.1f)); break;
+                    case TypeGun.ShotGun: _velosity = new Vector3(Random.Range(-0.05f, 0.05f), Random.Range(-0.1f, 0.1f), Random.Range(0.8f, 1.2f)); break;
                 }
                 _bullet.GetComponent<Rigidbody>().AddRelativeForce(_velosity*speedBullet, ForceMode.Acceleration);
             }
@@ -81,6 +85,11 @@ public class Gun : MonoBehaviour
         _view.ChangeGun(typeGun);
     }
 
+    private void TrownGranete()
+    {
+        var granete = Instantiate(Granate, _posSpawnGrenade.position, transform.rotation);
+        granete.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward*700, ForceMode.Acceleration);
+    }
     private void SetNewConfigurationGun(ConfigurationGun configurationGun)
     {
         typeGun = configurationGun.typeGun;

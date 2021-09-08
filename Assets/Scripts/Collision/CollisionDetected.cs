@@ -67,6 +67,21 @@ public class CollisionDetected : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<CollisionDetected>())
+        {
+            TypeCollision _collisionType = other.gameObject.GetComponent<CollisionDetected>()._Type;
+            if (_Type == TypeCollision.Player && _collisionType == TypeCollision.Granade)
+            {
+                _getDamagePlayer?.Invoke(other.gameObject.GetComponent<TrapView>()._ConfigTrap._damage);
+            }
+            if (_Type == TypeCollision.Enemy && _collisionType == TypeCollision.Granade)
+            {
+                _getDamageEnemy?.Invoke(other.gameObject.GetComponent<TrapView>()._ConfigTrap._damage);
+            }
+        }
+    }
     private void OnTriggerStay(Collider other)
     {
         if(other.gameObject.GetComponent<CollisionDetected>())

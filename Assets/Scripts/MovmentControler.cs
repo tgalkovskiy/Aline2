@@ -23,6 +23,7 @@ namespace PlayerNamaspase
         private bool run = false;
         public event Action ShootEvent;
         public event Action<TypeGun> ChangeGun;
+        public event Action GrenadeThrow;
 
         private void Start()
         {
@@ -49,6 +50,10 @@ namespace PlayerNamaspase
             if (Input.GetMouseButtonDown(0))
             {
                 ShootEvent?.Invoke();
+            }
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                GrenadeThrow?.Invoke();
             }
             if (Input.GetKeyDown(KeyCode.F))
             {

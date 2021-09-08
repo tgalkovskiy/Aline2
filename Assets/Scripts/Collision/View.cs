@@ -126,10 +126,17 @@ namespace Presenter
        }
        public void RemovePresenter_and_Model(CollisionDetected _collisionDetected)
        {
-           _enemy.RemoveAt(_enemy.FindIndex(x => x.name ==_collisionDetected.name));
-           GetExp(_collisionDetected.gameObject.GetComponent<EnemyView>().enemyConfig.exp);
-           Destroy(_collisionDetected.gameObject);
-           _presenterPlayer.ExucuteVampirism();
+            try
+            {
+                GetExp(_collisionDetected.gameObject.GetComponent<EnemyView>().enemyConfig.exp);
+                Destroy(_collisionDetected.gameObject);
+                _enemy.RemoveAt(_enemy.FindIndex(x => x.name ==_collisionDetected.name));
+                _presenterPlayer.ExucuteVampirism();
+            }
+            catch
+            {
+
+            }
        }
        
    } 
