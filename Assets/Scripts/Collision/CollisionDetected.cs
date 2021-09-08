@@ -18,7 +18,7 @@ public class CollisionDetected : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.GetComponent<CollisionDetected>())
+        if (other.gameObject.GetComponent<CollisionDetected>())
         {
             TypeCollision _collisionType = other.gameObject.GetComponent<CollisionDetected>()._Type;
             if (_Type == TypeCollision.Player && _collisionType == TypeCollision.Enemy)
@@ -29,7 +29,8 @@ public class CollisionDetected : MonoBehaviour
             {
                 _enemyAttack?.Invoke();
             }
-            if (_Type == TypeCollision.Enemy && _collisionType == TypeCollision.Bullet)
+            if (_Type == TypeCollision.Enemy
+                && (_collisionType == TypeCollision.Bullet || _collisionType == TypeCollision.ContiniousBullet))
             {
                 _getDamageEnemy?.Invoke(other.gameObject.GetComponent<GunDestroyer>().damage);
             }
@@ -47,6 +48,10 @@ public class CollisionDetected : MonoBehaviour
                 _ShowAction?.Invoke(true);
                 _DataAction?.Invoke(obj._TypeAction, obj.value);
                 View._Instance.DestroyerExecute =other.gameObject;
+            }
+            if (_Type == TypeCollision.Enemy && _collisionType == TypeCollision.ContiniousBullet)
+            {
+                _getDamageEnemy?.Invoke(other.gameObject.GetComponent<GunDestroyer>().damage);
             }
         }
     }

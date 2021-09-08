@@ -4,6 +4,7 @@ public enum TypeCollision
     Enemy,
     Trap,
     Bullet,
+    ContiniousBullet, // for fire, plasma and etc.
     Action,
     Granade
     
